@@ -12,7 +12,7 @@
 * What is autoscaling?
   [[file:images/autoscaling-explained.png]]
 
-  /Image Credits: http://blog.infracloud.io/kubernetes-autoscaling-explained/
+  /Image Credits: [[http://blog.infracloud.io/kubernetes-autoscaling-explained][http://blog.infracloud.io/kubernetes-autoscaling-explained]]/
 * Why you need autoscaling?
   - Cost saving
   - Less downtime
@@ -24,7 +24,7 @@
 * How to autoscale
 * Autoscaling Nodes
   - Cluster Autoscaler
-  - https://git.k8s.io/autoscaler/cluster-autoscaler
+  - [[https://git.k8s.io/autoscaler/cluster-autoscaler][https://git.k8s.io/autoscaler/cluster-autoscaler]]
 * Autoscaling Pods
   - Horizontally
   - Vertically
@@ -38,11 +38,11 @@
 ** 
    [[file:images/horizontal-pod-autoscaler.png]]
 
-   /Image Credits: https://git.k8s.io/website (CC BY 4.0)/
+   /Image Credits: [[https://git.k8s.io/website][https://git.k8s.io/website]] (CC BY 4.0)/
 * Autoscaling based on CPU/RAM
   [[file:images/core-metrics.png]]
 
-  /Image Credits: http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics/
+  /Image Credits: [[http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics][http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics]]/
   #+BEGIN_NOTES
   - Thist is part of src_sh[:exports code]{autoscaling/v1} which was introduced in v1.2 of Kubernetes
   - Needs resource limits and requests set in order to calculate the usage etc
@@ -98,12 +98,12 @@
   #+END_NOTES
 ** Using Prometheus and Prometheus adapter
    - Kubernetes Autoscaling with Custom Metrics
-   - http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics/
+   - [[http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics][http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics]]
 ** Using Datadog's Cluster Agent
    - Autoscale your Kubernetes workloads with any Datadog metric
-   - https://www.datadoghq.com/blog/autoscale-kubernetes-datadog/
+   - [[https://www.datadoghq.com/blog/autoscale-kubernetes-datadog][https://www.datadoghq.com/blog/autoscale-kubernetes-datadog]]
 * What's next
-  - http://blog.infracloud.io/kubernetes-autoscaling-explained/
-  - https://youtu.be/YWLrvj3XOD0
-  - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+  - [[http://blog.infracloud.io/kubernetes-autoscaling-explained][http://blog.infracloud.io/kubernetes-autoscaling-explained]]
+  - [[https://youtu.be/YWLrvj3XOD0][https://youtu.be/YWLrvj3XOD0]]
+  - [[https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale][https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale]]
 * Thank you
