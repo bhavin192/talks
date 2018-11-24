@@ -1,0 +1,109 @@
+#+TITLE: Autoscaling in Kubernetes
+#+AUTHOR: Bhavin Gandhi
+#+EMAIL: @_bhavin192
+#+REVEAL_THEME: black
+#+OPTIONS: num:nil toc:nil ^:nil
+* Autoscaling in Kubernetes
+  Bhavin Gandhi
+
+  [[https://twitter.com/_bhavin192][@_bhavin192]]
+
+  [[https://geeksocket.in][geeksocket.in]]
+* What is autoscaling?
+  [[file:images/autoscaling-explained.png]]
+
+  /Image Credits: http://blog.infracloud.io/kubernetes-autoscaling-explained/
+* Why you need autoscaling?
+  - Cost saving
+  - Less downtime
+* What to autoscale
+  - Application instances (Pods)
+  - Nodes
+* When to autoscale
+  - What are metrics
+* How to autoscale
+* Autoscaling Nodes
+  - Cluster Autoscaler
+  - https://git.k8s.io/autoscaler/cluster-autoscaler
+* Autoscaling Pods
+  - Horizontally
+  - Vertically
+* HorizontalPodAutoscaler
+  - Controller loop
+    - Looks for certain metric values and takes decisions based on those values
+  - Fetches metrics values from the end point
+    - src_sh[:exports code]{metrics.k8s.io}
+    - src_sh[:exports code]{custom.metrics.k8s.io}
+    - src_sh[:exports code]{external.metrics.k8s.io}
+** 
+   [[file:images/horizontal-pod-autoscaler.png]]
+
+   /Image Credits: https://git.k8s.io/website (CC BY 4.0)/
+* Autoscaling based on CPU/RAM
+  [[file:images/core-metrics.png]]
+
+  /Image Credits: http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics/
+  #+BEGIN_NOTES
+  - Thist is part of src_sh[:exports code]{autoscaling/v1} which was introduced in v1.2 of Kubernetes
+  - Needs resource limits and requests set in order to calculate the usage etc
+  #+END_NOTES
+** Demo
+   #+BEGIN_SRC bash
+   # Create a deployment
+   $ kubectl run stress-deploy \
+     --image=monitoringartist/docker-killer:latest \
+     --limits="cpu=200m,memory=512Mi" \
+     --requests="cpu=200m,memory=512Mi" \
+     --env="TIMEOUT=10000" -- cpubomb
+
+   # Autoscale it based on CPU usage
+   $ kubectl autoscale deployment \
+     --max="100" --min="3" \
+     --cpu-percent="80" \
+     stress-deploy
+   #+END_SRC
+** Check the status
+   #+BEGIN_SRC bash
+   # Watch HorizontalPodAutoscaler
+   $ kubectl get hpa -w
+
+   # Watch Pods
+   $ kubectl get pods -w
+
+   # Get list of Nodes
+   $ kubectl get nodes
+   #+END_SRC
+** HPA specification
+   #+BEGIN_SRC yaml
+   apiVersion: autoscaling/v2beta1
+   kind: HorizontalPodAutoscaler
+   metadata:
+     name: stress-deploy
+   spec:
+     scaleTargetRef:
+       apiVersion: apps/v1beta1
+       kind: Deployment
+       name: stress-deploy
+     minReplicas: 3
+     maxReplicas: 100
+     metrics:
+     - type: Resource
+       resource:
+         name: cpu
+         targetAverageUtilization: 80
+   #+END_SRC
+* Autoscaling based on custom metrics
+  #+BEGIN_NOTES
+  This is part of src_sh[:exports code]{autoscaling/v2beta1} introduced in v1.6 of Kubernetes
+  #+END_NOTES
+** Using Prometheus and Prometheus adapter
+   - Kubernetes Autoscaling with Custom Metrics
+   - http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics/
+** Using Datadog's Cluster Agent
+   - Autoscale your Kubernetes workloads with any Datadog metric
+   - https://www.datadoghq.com/blog/autoscale-kubernetes-datadog/
+* What's next
+  - http://blog.infracloud.io/kubernetes-autoscaling-explained/
+  - https://youtu.be/YWLrvj3XOD0
+  - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+* Thank you
