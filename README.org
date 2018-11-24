@@ -1,0 +1,16 @@
+* Collection of slides and images
+  Most of the slides are generated from GNU Emacs Org mode files
+* Generating slides from source
+** Slides using Reveal.js
+   Follow [[https://opensource.com/article/18/2/how-create-slides-emacs-org-mode-and-revealjs][this tutorial]] to setup Reveal.js and export the slides as
+   html file
+** Slides with just simple .org files
+   There are some files which don't have any specific options related
+   to Reveal.js, those are just simple org files. Either view them
+   directly on Emacs or generate html by exporting with Reveal.js
+* Licensing
+  - This repository is licensed under GNU General Public License
+    v3.0. See [[file:LICENSE][LICENSE]] for the full license text.
+  - Images used in the slides may have different License and
+    Copyright, credits are given either in speaker notes or on the
+    slides directly. Please check the details before reusing.
