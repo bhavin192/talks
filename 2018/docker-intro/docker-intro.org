@@ -1,0 +1,14 @@
+* What is a Container?
+  - Containers?
+  - Lightweight virtualization?
+  - Same as VMs?
+  - [[file:/tmp/test-1][A system]]
+  - [[https://www.docker.com/resources/what-container][What is Docker/Container: docker.com]]
+* What is Docker?
+  - A way to run containers
+  - Server Client to run containers
+* Demo time
+  - sudo docker container run hello-world
+  - [[https://github.com/nginxinc/docker-nginx/blob/f4d30145c60c433966df96f618d78513fee9d322/mainline/stretch/Dockerfile][Dockerfile: nginx]]
+  - https://training.play-with-docker.com/
+
