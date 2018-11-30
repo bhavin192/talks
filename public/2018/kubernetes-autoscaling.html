@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Autoscaling in Kubernetes</title>
+<meta name="author" content="(Bhavin Gandhi)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://revealjs.com/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://revealjs.com/css/theme/black.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://revealjs.com/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<section id="slide-sec-">
+<h2 id="orga4a440e">Autoscaling in Kubernetes</h2>
+<p>
+Bhavin Gandhi
+</p>
+
+<p>
+<a href="https://twitter.com/_bhavin192">@_bhavin192</a>
+</p>
+
+<p>
+<a href="https://geeksocket.in">geeksocket.in</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgfc9cf6e">What is autoscaling?</h2>
+
+<div class="figure">
+<p><img src="images/autoscaling-explained.png" alt="autoscaling-explained.png" />
+</p>
+</div>
+
+<p>
+<i>Image Credits: <a href="http://blog.infracloud.io/kubernetes-autoscaling-explained">http://blog.infracloud.io/kubernetes-autoscaling-explained</a></i>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org1c15e1e">Why you need autoscaling?</h2>
+<ul>
+<li>Cost saving</li>
+<li>Less downtime</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org9bf0e71">What to autoscale</h2>
+<ul>
+<li>Application instances (Pods)</li>
+<li>Nodes</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org1b1d660">When to autoscale</h2>
+<ul>
+<li>What are metrics</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgd9f1e66">How to autoscale</h2>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orga2cabdd">Autoscaling Nodes</h2>
+<ul>
+<li>Cluster Autoscaler</li>
+<li><a href="https://git.k8s.io/autoscaler/cluster-autoscaler">https://git.k8s.io/autoscaler/cluster-autoscaler</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org2364dfa">Autoscaling Pods</h2>
+<ul>
+<li>Horizontally</li>
+<li>Vertically</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orge1cdea5">HorizontalPodAutoscaler</h2>
+<ul>
+<li>Controller loop
+<ul>
+<li>Looks for certain metric values and takes decisions based on those values</li>
+
+</ul></li>
+<li>Fetches metrics values from the end point
+<ul>
+<li><code class="src src-sh">metrics.k8s.io</code></li>
+<li><code class="src src-sh">custom.metrics.k8s.io</code></li>
+<li><code class="src src-sh">external.metrics.k8s.io</code></li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-sec-">
+<h3 id="org54375dc"></h3>
+
+<div class="figure">
+<p><img src="images/horizontal-pod-autoscaler.png" alt="horizontal-pod-autoscaler.png" />
+</p>
+</div>
+
+<p>
+<i>Image Credits: <a href="https://git.k8s.io/website">https://git.k8s.io/website</a> (CC BY 4.0)</i>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgd03e4c9">Autoscaling based on CPU/RAM</h2>
+
+<div class="figure">
+<p><img src="images/core-metrics.png" alt="core-metrics.png" />
+</p>
+</div>
+
+<p>
+<i>Image Credits: <a href="http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics">http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics</a></i>
+</p>
+<aside class="notes">
+<ul>
+<li>Thist is part of <code class="src src-sh">autoscaling/v1</code> which was introduced in v1.2 of Kubernetes</li>
+<li>Needs resource limits and requests set in order to calculate the usage etc</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-sec-">
+<h3 id="org83b2868">Demo</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Create a deployment</span>
+$ kubectl run stress-deploy <span style="color: #2d9574;">\</span>
+  --image=monitoringartist/docker-killer:latest <span style="color: #2d9574;">\</span>
+  --limits=<span style="color: #2d9574;">"cpu=200m,memory=512Mi"</span> <span style="color: #2d9574;">\</span>
+  --requests=<span style="color: #2d9574;">"cpu=200m,memory=512Mi"</span> <span style="color: #2d9574;">\</span>
+  --env=<span style="color: #2d9574;">"TIMEOUT=10000"</span> -- cpubomb
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Autoscale it based on CPU usage</span>
+$ kubectl autoscale deployment <span style="color: #2d9574;">\</span>
+  --max=<span style="color: #2d9574;">"100"</span> --min=<span style="color: #2d9574;">"3"</span> <span style="color: #2d9574;">\</span>
+  --cpu-percent=<span style="color: #2d9574;">"80"</span> <span style="color: #2d9574;">\</span>
+  stress-deploy
+</pre>
+</div>
+</section>
+<section id="slide-sec-">
+<h3 id="org894d132">Check the status</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Watch HorizontalPodAutoscaler</span>
+$ kubectl get hpa -w
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Watch Pods</span>
+$ kubectl get pods -w
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Get list of Nodes</span>
+$ kubectl get nodes
+</pre>
+</div>
+</section>
+<section id="slide-sec-">
+<h3 id="orgdc21eab">HPA specification</h3>
+<div class="org-src-container">
+
+<pre  class="src src-yaml"><span style="color: #7590db;">apiVersion</span>: autoscaling/v2beta1
+<span style="color: #7590db;">kind</span>: HorizontalPodAutoscaler
+<span style="color: #7590db;">metadata</span>:
+  <span style="color: #7590db;">name</span>: stress-deploy
+<span style="color: #7590db;">spec</span>:
+  <span style="color: #7590db;">scaleTargetRef</span>:
+    <span style="color: #7590db;">apiVersion</span>: apps/v1beta1
+    <span style="color: #7590db;">kind</span>: Deployment
+    <span style="color: #7590db;">name</span>: stress-deploy
+  <span style="color: #7590db;">minReplicas</span>: 3
+  <span style="color: #7590db;">maxReplicas</span>: 100
+  <span style="color: #7590db;">metrics</span>:
+  - <span style="color: #7590db;">type</span>: Resource
+    <span style="color: #7590db;">resource</span>:
+      <span style="color: #7590db;">name</span>: cpu
+      <span style="color: #7590db;">targetAverageUtilization</span>: 80
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org47a59b5">Autoscaling based on custom metrics</h2>
+<aside class="notes">
+<p>
+This is part of <code class="src src-sh">autoscaling/v2beta1</code> introduced in v1.6 of Kubernetes
+</p>
+
+</aside>
+</section>
+<section id="slide-sec-">
+<h3 id="org91bc2dc">Using Prometheus and Prometheus adapter</h3>
+<ul>
+<li>Kubernetes Autoscaling with Custom Metrics</li>
+<li><a href="http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics">http://blog.infracloud.io/kubernetes-autoscaling-custom-metrics</a></li>
+
+</ul>
+</section>
+<section id="slide-sec-">
+<h3 id="orga9d2472">Using Datadog's Cluster Agent</h3>
+<ul>
+<li>Autoscale your Kubernetes workloads with any Datadog metric</li>
+<li><a href="https://www.datadoghq.com/blog/autoscale-kubernetes-datadog">https://www.datadoghq.com/blog/autoscale-kubernetes-datadog</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgadf7f47">What's next</h2>
+<ul>
+<li><a href="http://blog.infracloud.io/kubernetes-autoscaling-explained">http://blog.infracloud.io/kubernetes-autoscaling-explained</a></li>
+<li><a href="https://youtu.be/YWLrvj3XOD0">https://youtu.be/YWLrvj3XOD0</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgd2b9c0f">Thank you</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://revealjs.com/lib/js/head.min.js"></script>
+<script src="https://revealjs.com/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
