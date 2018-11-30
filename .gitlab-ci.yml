@@ -1,0 +1,12 @@
+# ref: https://gitlab.com/pages/plain-html
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+  - echo 'Nothing to do...'
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
