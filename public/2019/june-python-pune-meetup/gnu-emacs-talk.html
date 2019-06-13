@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>GNU Emacs - tool for all your editing needs</title>
+<meta name="author" content="(Bhavin Gandhi)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://revealjs.com/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://revealjs.com/css/theme/black.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://revealjs.com/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<section id="slide-sec-">
+<h2 id="org1520cbe">GNU Emacs</h2>
+<p>
+<i>Tool for all your editing needs</i>
+</p>
+
+<p>
+Bhavin Gandhi
+</p>
+
+<p>
+<a href="https://twitter.com/_bhavin192">@_bhavin192</a>
+</p>
+
+<p>
+<a href="https://geeksocket.in">geeksocket.in</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org05c73e4">Why Emacs?</h2>
+<ul>
+<li>We write things as part of work</li>
+<li>Less context switch
+<ul>
+<li>Need to use just keyboard</li>
+<li>Staying inside same tool</li>
+
+</ul></li>
+<li>Extensible</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org1f4ebc8"></h2>
+<blockquote nil>
+<p>
+A tailored shirt and pant looks far better than a readymade one; the
+same applies to Emacs
+</p>
+
+<p>
+mbuf
+</p>
+</blockquote>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org807b0c2">Basic terminology</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>C</code></td>
+<td class="org-left">Control key</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M</code></td>
+<td class="org-left">Meta key</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC</code></td>
+<td class="org-left">Space</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>DEL</code></td>
+<td class="org-left">Backspace</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">Enter</td>
+</tr>
+
+<tr>
+<td class="org-left">Buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Frame</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-sec-">
+<h3 id="orgda4644c">Navigating through the buffers</h3>
+<ul>
+<li>Moving the cursor next, previous, forward, back</li>
+<li>Moving to end and beginning of line</li>
+<li>Moving by words</li>
+<li>Consistent over whole user interface</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li><code>C-n C-p C-f C-b</code></li>
+<li><code>C-a C-e</code></li>
+<li><code>M-f M-b M-a M-e</code></li>
+<li>How these key bindings make it easy to navigate through out all
+the buffers</li>
+<li>No need to switch modes for just navigating through files</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-sec-">
+<h3 id="orgf6fd837">Opening files/directories</h3>
+<ul>
+<li>Opening a file</li>
+<li>Opening files in read only mode</li>
+<li>Dired mode</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li><code>C-x C-f</code></li>
+<li><code>C-x C-r</code></li>
+<li>Making a buffer read only</li>
+<li>Dired mode - Copy(C), Rename(R), Zip(Z)</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-sec-">
+<h3 id="org8a2f542">Switching, Splitting buffers</h3>
+<ul>
+<li>Splitting vertically, horizontally</li>
+<li>Jump to other buffers from same frame</li>
+<li>Jump to buffers from other frames</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>Quick switching between frames and buffers</li>
+<li>C-x 1, 2, 3, 0</li>
+<li>C-x 5 o, 0</li>
+<li>C-x o</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-sec-">
+<h3 id="org49db3a9">Selecting and copying text</h3>
+<ul>
+<li>Without mouse</li>
+<li>kill ring</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li><code>C-SPC</code> navigate through the buffer</li>
+<li><code>C-w M-w</code></li>
+<li><code>C-y M-y</code></li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-sec-">
+<h3 id="org0980e79">Creating Macros</h3>
+<ul>
+<li>Defining macros</li>
+<li>Executing them</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li><code>C-x (</code> perform the steps <code>C-x )</code></li>
+<li><code>C-x e</code></li>
+
+</ul>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgd63c516">Emacs as Terminal</h2>
+<ul>
+<li>Available modes
+<ul>
+<li><code>shell</code></li>
+<li><code>eshell</code></li>
+<li><code>ansi-term</code></li>
+
+</ul></li>
+<li>Better than normal terminal emulator?</li>
+<li>SSH?</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>Advantage of having terminal emulator as buffer</li>
+<li>ssh to a machine using Tramp</li>
+
+</ul>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgd8dce32">Quick tour of other features</h2>
+<p>
+Few of the other useful features
+</p>
+<ul>
+<li>Spell check
+<ul>
+<li><code>ispell</code></li>
+<li><code>flyspell-mode</code></li>
+
+</ul></li>
+<li>Calendar</li>
+<li>Calculator</li>
+<li><code>eww</code></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org56857b7">Org mode</h2>
+<ul>
+<li>Taking notes</li>
+<li>Writing documents</li>
+<li>Managing tasks
+<ul>
+<li>Org agenda</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org4d4ab49">Magit</h2>
+<ul>
+<li>Viewing diffs</li>
+<li>Doing commits</li>
+<li>View logs</li>
+<li>Interactive rebase</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgdab9ca6"></h2>
+<p>
+<a href="https://www.youtube-nocookie.com/embed/w9rUQovDPn8">https://www.youtube-nocookie.com/embed/w9rUQovDPn8</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgb60bc58">Further reading</h2>
+<p>
+<a href="https://geeksocket.in/posts/entering-church-emacs/">Entering The Church of Emacs · GeekSocket</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgf1c054a">Thank you</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://revealjs.com/lib/js/head.min.js"></script>
+<script src="https://revealjs.com/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c/t',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
