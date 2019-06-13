@@ -1,0 +1,116 @@
+#+TITLE: GNU Emacs - tool for all your editing needs
+#+AUTHOR: Bhavin Gandhi
+#+EMAIL: @_bhavin192
+#+REVEAL_THEME: black
+#+OPTIONS: num:nil toc:nil ^:nil reveal_slide_number:c/t
+* GNU Emacs
+  /Tool for all your editing needs/
+
+  Bhavin Gandhi
+
+  [[https://twitter.com/_bhavin192][@_bhavin192]]
+
+  [[https://geeksocket.in][geeksocket.in]]
+* Why Emacs?
+- We write things as part of work
+- Less context switch
+  - Need to use just keyboard
+  - Staying inside same tool
+- Extensible
+* 
+#+BEGIN_QUOTE
+A tailored shirt and pant looks far better than a readymade one; the
+same applies to Emacs
+
+mbuf
+#+END_QUOTE
+* Basic terminology
+  | ~C~    | Control key |
+  | ~M~    | Meta key    |
+  | ~SPC~  | Space       |
+  | ~DEL~  | Backspace   |
+  | ~RET~  | Enter       |
+  | Buffer |             |
+  | Frame  |             |
+** Navigating through the buffers
+   - Moving the cursor next, previous, forward, back
+   - Moving to end and beginning of line
+   - Moving by words
+   - Consistent over whole user interface
+   #+BEGIN_NOTES
+   - ~C-n C-p C-f C-b~
+   - ~C-a C-e~
+   - ~M-f M-b M-a M-e~
+   - How these key bindings make it easy to navigate through out all
+     the buffers
+   - No need to switch modes for just navigating through files
+   #+END_NOTES
+** Opening files/directories
+   - Opening a file
+   - Opening files in read only mode
+   - Dired mode
+   #+BEGIN_NOTES
+   - ~C-x C-f~
+   - ~C-x C-r~
+   - Making a buffer read only
+   - Dired mode - Copy(C), Rename(R), Zip(Z)
+   #+END_NOTES
+** Switching, Splitting buffers
+   - Splitting vertically, horizontally
+   - Jump to other buffers from same frame
+   - Jump to buffers from other frames
+   #+BEGIN_NOTES
+   - Quick switching between frames and buffers
+   - C-x 1, 2, 3, 0
+   - C-x 5 o, 0
+   - C-x o
+   #+END_NOTES
+** Selecting and copying text
+   - Without mouse
+   - kill ring
+   #+BEGIN_NOTES
+   - ~C-SPC~ navigate through the buffer
+   - ~C-w M-w~
+   - ~C-y M-y~
+   #+END_NOTES
+** Creating Macros
+   - Defining macros
+   - Executing them
+   #+BEGIN_NOTES
+   - ~C-x (~ perform the steps ~C-x )~
+   - ~C-x e~
+   #+END_NOTES
+* Emacs as Terminal
+  - Available modes
+    - ~shell~
+    - ~eshell~
+    - ~ansi-term~
+  - Better than normal terminal emulator?
+  - SSH?
+  #+BEGIN_NOTES
+  - Advantage of having terminal emulator as buffer
+  - ssh to a machine using Tramp
+  #+END_NOTES
+* Quick tour of other features
+  Few of the other useful features
+  - Spell check
+    - ~ispell~
+    - ~flyspell-mode~
+  - Calendar
+  - Calculator
+  - ~eww~
+* Org mode
+  - Taking notes
+  - Writing documents
+  - Managing tasks
+    - Org agenda
+* Magit
+  - Viewing diffs
+  - Doing commits
+  - View logs
+  - Interactive rebase
+* 
+https://www.youtube-nocookie.com/embed/w9rUQovDPn8
+* Further reading
+[[https://geeksocket.in/posts/entering-church-emacs/][Entering The Church of Emacs · GeekSocket]]
+* Thank you
