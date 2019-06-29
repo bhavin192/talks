@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Managing container workloads with Amazon EKS</title>
+<meta name="author" content="(Bhavin Gandhi)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://revealjs.com/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://revealjs.com/css/theme/black.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://revealjs.com/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<section id="slide-sec-">
+<h2 id="orgba0f4f4">Amazon EKS</h2>
+<p>
+<i>Managed Kubernetes Service by Amazon AWS</i>
+</p>
+
+<p>
+Bhavin Gandhi
+</p>
+
+<p>
+bhavin[at]infracloud.io
+</p>
+
+<p>
+<a href="https://twitter.com/_bhavin192">@_bhavin192</a>
+</p>
+
+<p>
+<a href="https://geeksocket.in">geeksocket.in</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org52ca6eb">Containers? Kubernetes?</h2>
+<ul>
+<li>Isolated processes along with dependencies</li>
+<li>Production ready container orchestration</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org642ddd8">Kubernetes components</h2>
+<p>
+<img src="https://d33wubrfki0l68.cloudfront.net/518e18713c865fe67a5f23fc64260806d72b38f5/61d75/images/docs/post-ccm-arch.png" alt="post-ccm-arch.png" />
+<i>Image Credits: <a href="https://git.k8s.io/website">https://git.k8s.io/website</a> (CC-BY-4.0)</i>
+</p>
+</section>
+<section id="slide-sec-">
+<h3 id="orgdf7368c">Master plane</h3>
+<ul>
+<li>kube-controller-manager</li>
+<li>kube-apiserver</li>
+<li>kube-scheduler</li>
+<li>cloud-controller-manager</li>
+<li>etcd cluster</li>
+
+</ul>
+</section>
+<section id="slide-sec-">
+<h3 id="orgc852f10">Worker plane</h3>
+<ul>
+<li>kube-proxy</li>
+<li>kubelet</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org63263b5">Running Kubernetes on AWS</h2>
+<ul>
+<li><a href="https://github.com/kubernetes/kops">kops</a></li>
+<li><a href="https://rancher.com/">Rancher</a></li>
+<li>Amazon Elastic Kubernetes Service (EKS)</li>
+
+</ul>
+</section>
+<section id="slide-sec-">
+<h3 id="org5362045"></h3>
+
+<div class="figure">
+<p><img src="https://rancher.com/imgs/Rancher_OnePlatform_v3_2-ITOPERATIONS.jpg" alt="Rancher_OnePlatform_v3_2-ITOPERATIONS.jpg" />
+</p>
+</div>
+
+<p>
+<i>Image Credits: <a href="https://rancher.com">https://rancher.com</a></i>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org082e167">Managed vs self hosted</h2>
+<ul>
+<li>Cost</li>
+<li>Scaling of master plane components</li>
+<li>Managing etcd</li>
+<li>Security updates</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>Fixed cost of master plane with $144 per month, can scale with
+increasing number of worker nodes.</li>
+<li>Self hosted needs to run on something like c4.large with minimum 3
+nodes, costs more than $250 per month. Cost increases as number of
+worker nodes increase due to need to increase in master nodes as
+well</li>
+<li>Backup, replication, HA of etcd</li>
+
+</ul>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org0e651a4">Introducing EKS</h2>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org84879cd">Features</h2>
+<ul>
+<li>Vanilla Kubernetes setup</li>
+<li><a href="https://landscape.cncf.io/category=certified-kubernetes-hosted&amp;format=card-mode&amp;grouping=category&amp;selected=amazon-elastic-container-service-for-kubernetes-eks">Certified Kubernetes Solution</a></li>
+
+</ul>
+</section>
+<section id="slide-sec-">
+<h3 id="orgdadb84c">Runs on AWS services</h3>
+<ul>
+<li>EC2 as worker nodes</li>
+<li>ASG for worker node groups</li>
+<li>Security Groups</li>
+<li><a href="https://aws.amazon.com/ecr/">Amazon Elastic Container Registry</a> (ECR)</li>
+
+</ul>
+</section>
+<section id="slide-sec-">
+<h3 id="org4e685b8">Networking solution</h3>
+<ul>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s/">amazon-vpc-cni-k8s</a></li>
+<li>Assigns IP addresses from Subnet directly to Pods</li>
+<li>Uses Calico for NetworkPolicy implementation</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>Attaches ENIs to the instances and assigns IPs from that</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-sec-">
+<h3 id="org3d36e1d">Audit logs to CloudWatch</h3>
+<ul>
+<li>Shipping logs from Kubernetes master components to CloudWatch</li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon EKS Control Plane Logging - Amazon EKS</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org51db6c6">Do watch out for</h2>
+<ul>
+<li>Creating your own AMI (<a href="https://github.com/awslabs/amazon-eks-ami">awslabs/amazon-eks-ami</a>)</li>
+<li>No out of the box support for Prometheus metrics</li>
+<li>IAM access segregation at Pod level is not present (<a href="https://github.com/aws/containers-roadmap/issues/23">Issue #23</a>)</li>
+<li>Updating worker nodes needs some more efforts</li>
+<li>ASG is not aware about draining nodes before killing/terminating
+them</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>Kiam can be a solution here <a href="https://github.com/uswitch/kiam">https://github.com/uswitch/kiam</a></li>
+<li>Need to drain worker nodes, update stuff then also update the
+aws-node DaemonSet etc</li>
+<li>EC2 ASG features like re-balancing nodes can terminate instances</li>
+
+</ul>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orga9db0c7">Creating EKS cluster</h2>
+<ul>
+<li><a href="https://eksctl.io/">eksctl</a> by Weaveworks</li>
+<li>Using CloudFormation scripts</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org03df65a">Official documentation</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html">What Is Amazon EKS? - Amazon EKS</a></li>
+<li><a href="https://github.com/aws/containers-roadmap">aws/containers-roadmap: The public roadmap for AWS container
+services (ECS, ECR, Fargate, and EKS)</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org724d455">More references</h2>
+<ul>
+<li><a href="https://kubedex.com/90-days-of-aws-eks-in-production/">90 days of AWS EKS in Production - kubedex.com</a></li>
+<li><a href="https://engineering.hellofresh.com/lessons-learned-from-running-eks-in-production-a6dddb8368b8">Lessons Learned from running EKS in Production – HelloTech</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://revealjs.com/lib/js/head.min.js"></script>
+<script src="https://revealjs.com/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c/t',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+#+TITLE: Managing container workloads with Amazon EKS
+#+AUTHOR: Bhavin Gandhi
+#+EMAIL: @_bhavin192
+#+REVEAL_THEME: black
+#+OPTIONS: num:nil toc:nil ^:nil reveal_slide_number:c/t
+* Amazon EKS
+  /Managed Kubernetes Service by Amazon AWS/
+
+  Bhavin Gandhi
+
+  bhavin[at]infracloud.io
+
+  [[https://twitter.com/_bhavin192][@_bhavin192]]
+
+  [[https://geeksocket.in][geeksocket.in]]
+* Containers? Kubernetes?
+  - Isolated processes along with dependencies
+  - Production ready container orchestration
+* Kubernetes components
+  https://d33wubrfki0l68.cloudfront.net/518e18713c865fe67a5f23fc64260806d72b38f5/61d75/images/docs/post-ccm-arch.png
+  /Image Credits: [[https://git.k8s.io/website][https://git.k8s.io/website]] (CC-BY-4.0)/
+** Master plane
+   - kube-controller-manager
+   - kube-apiserver
+   - kube-scheduler
+   - cloud-controller-manager
+   - etcd cluster
+** Worker plane
+   - kube-proxy
+   - kubelet
+* Running Kubernetes on AWS
+  - [[https://github.com/kubernetes/kops][kops]]
+  - [[https://rancher.com/][Rancher]]
+  - Amazon Elastic Kubernetes Service (EKS)
+** 
+   https://rancher.com/imgs/Rancher_OnePlatform_v3_2-ITOPERATIONS.jpg
+
+   /Image Credits: [[https://rancher.com]]/
+* Managed vs self hosted
+  - Cost
+  - Scaling of master plane components
+  - Managing etcd
+  - Security updates
+  #+BEGIN_NOTES
+  - Fixed cost of master plane with $144 per month, can scale with
+    increasing number of worker nodes.
+  - Self hosted needs to run on something like c4.large with minimum 3
+    nodes, costs more than $250 per month. Cost increases as number of
+    worker nodes increase due to need to increase in master nodes as
+    well
+  - Backup, replication, HA of etcd
+  #+END_NOTES
+* Introducing EKS
+* Features
+  - Vanilla Kubernetes setup
+  - [[https://landscape.cncf.io/category=certified-kubernetes-hosted&format=card-mode&grouping=category&selected=amazon-elastic-container-service-for-kubernetes-eks][Certified Kubernetes Solution]]
+** Runs on AWS services
+   - EC2 as worker nodes
+   - ASG for worker node groups
+   - Security Groups
+   - [[https://aws.amazon.com/ecr/][Amazon Elastic Container Registry]] (ECR)
+** Networking solution
+   - [[https://github.com/aws/amazon-vpc-cni-k8s/][amazon-vpc-cni-k8s]]
+   - Assigns IP addresses from Subnet directly to Pods
+   - Uses Calico for NetworkPolicy implementation
+   #+BEGIN_NOTES
+   - Attaches ENIs to the instances and assigns IPs from that
+   #+END_NOTES
+** Audit logs to CloudWatch
+   - Shipping logs from Kubernetes master components to CloudWatch
+   - [[https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html][Amazon EKS Control Plane Logging - Amazon EKS]]
+* Do watch out for
+  - Creating your own AMI ([[https://github.com/awslabs/amazon-eks-ami][awslabs/amazon-eks-ami]])
+  - No out of the box support for Prometheus metrics
+  - IAM access segregation at Pod level is not present ([[https://github.com/aws/containers-roadmap/issues/23][Issue #23]])
+  - Updating worker nodes needs some more efforts
+  - ASG is not aware about draining nodes before killing/terminating
+    them
+  #+BEGIN_NOTES
+  - Kiam can be a solution here https://github.com/uswitch/kiam
+  - Need to drain worker nodes, update stuff then also update the
+    aws-node DaemonSet etc
+  - EC2 ASG features like re-balancing nodes can terminate instances
+  #+END_NOTES
+* Creating EKS cluster
+  - [[https://eksctl.io/][eksctl]] by Weaveworks
+  - Using CloudFormation scripts
+* Official documentation
+  - [[https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html][What Is Amazon EKS? - Amazon EKS]]
+  - [[https://github.com/aws/containers-roadmap][aws/containers-roadmap: The public roadmap for AWS container
+    services (ECS, ECR, Fargate, and EKS)]]
+* More references
+  - [[https://kubedex.com/90-days-of-aws-eks-in-production/][90 days of AWS EKS in Production - kubedex.com]]
+  - [[https://engineering.hellofresh.com/lessons-learned-from-running-eks-in-production-a6dddb8368b8][Lessons Learned from running EKS in Production – HelloTech]]
