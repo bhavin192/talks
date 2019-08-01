@@ -1,0 +1,66 @@
+#+TITLE: Implementing distributed tracing in a FaaS platform
+#+OPTIONS: num:nil
+* Title
+  Implementing distributed tracing in a FaaS platform
+* Abstract
+  Microservices as well as functions have changed the way applications
+  are built and deployed now a days. Adoption of these distributed
+  architectures have helped teams to implement scalable, efficient and
+  reliable systems. Operational tasks like debugging have became quite
+  tricky with this change. With functions, these tasks become more
+  complicated when you have message queues like Kafka in
+  between. Having a system to which we can ask questions about state
+  of our services is really crucial. Distributed tracing helps to have
+  observability in our system. It helps to get more insight into how
+  our services are communicating.
+
+  This talk will be a walk through about my journey of implementing
+  distributed tracing in functions which run on a Function as a
+  Service platform, called Fission. It will also brief about changes
+  made to the Fission's components, as well Jaeger's client library
+  along the way.
+* Outline
+  - What is observability?
+    - Logging and metrics
+    - Distributed tracing
+  - About Fission
+    - Fission function environments
+  - About Jaeger
+    - Instrumenting applications using client libraries
+  - Architecture of demo application
+    - Kafka as message queue
+  - Instrumenting the functions
+    - Modifications made to the Fission's environments
+    - Propagating the context through Kafka
+  - Changes made to Fission
+  - Changes made to Jaeger's Python library
+* Requirements
+  - It is better to have basic idea about microservices
+* Links
+  - https://geeksocket.in/
+  - https://www.infracloud.io/author/bhavin/
+  - https://github.com/bhavin192/fission/tree/python-env-opentracing/environments/python
+  - https://github.com/jaegertracing/jaeger-client-python/commits?author=bhavin192
+  - https://github.com/fission/fission/commits?author=bhavin192
+* Speaker bio
+  Bhavin is working with InfraCloud Technologies, Pune. His main area
+  of interest are Free/Libre and Open Source Software, DevSecOps,
+  containers and Kubernetes. Have contributed to Fission as well
+  Jaeger's components.
+* Review comment replies
+  #+BEGIN_QUOTE
+  1. This proposal talks more about implementing tracing in the
+     applications/functions.Basically, it builds upon the concepts
+     explained in the 'Distributed tracing with Jaeger at scale'. I
+     will also brief about client libraries used to achieve that,
+     whereas 'Distributed tracing with Jaeger at scale' talks more on
+     the overall importance of tracing. First point might sound like a
+     slight overlap, but it would help to set the ground for rest of
+     the talk.
+  2. That is really a great workshop proposal. I will be covering only
+     specific components of Fission and what modifications were made
+     to those components. Whereas the workshop has covered complete
+     details of what, why, how of FaaS.
+
+  Both 1 and 2 set really good foundation for my talk proposal
+  #+END_QUOTE
