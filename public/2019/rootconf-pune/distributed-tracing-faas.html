@@ -28,7 +28,7 @@
 <div class="slides">
 <section>
 <section id="slide-sec-">
-<h2 id="orgfb4cdf5">Distributed tracing and FaaS?</h2>
+<h2 id="orga1c418a">Distributed tracing and FaaS?</h2>
 <p>
 <i>Tracing Fission functions with Jaeger</i>
 </p>
@@ -38,7 +38,7 @@ Bhavin Gandhi
 </p>
 
 <p>
-bhavin[at]infracloud.io
+bhavin192[at]geeksocket.in
 </p>
 
 <p>
@@ -52,7 +52,7 @@ bhavin[at]infracloud.io
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org3e17147">Microservices?</h2>
+<h2 id="orgac43dc7">Microservices?</h2>
 <ul>
 <li>Treating services as products</li>
 <li>More easy to manage</li>
@@ -60,10 +60,19 @@ bhavin[at]infracloud.io
 
 </ul>
 </section>
+<section id="slide-sec-">
+<h3 id="org1af4a3b"></h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="microservices.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+</section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgb9697e3">Observability</h2>
+<h2 id="org75bbfc1">Observability</h2>
 <ul>
 <li>Logs</li>
 <li>Metrics</li>
@@ -74,9 +83,10 @@ bhavin[at]infracloud.io
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org429cf29">Functions on Kubernetes</h2>
+<h2 id="org4edc41f">Functions on Kubernetes</h2>
 <ul>
 <li>Fission</li>
+<li>Kubernetes native</li>
 
 </ul>
 <aside class="notes">
@@ -87,7 +97,7 @@ Talk about how Fission is completely Kubernetes aware, uses CRDs etc
 </aside>
 </section>
 <section id="slide-sec-">
-<h3 id="orgc8b90bc">Components</h3>
+<h3 id="org3977119">Resources</h3>
 <ul>
 <li>Trigger</li>
 <li>Environment</li>
@@ -96,7 +106,7 @@ Talk about how Fission is completely Kubernetes aware, uses CRDs etc
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orgb9fb835">Fission function environments</h3>
+<h3 id="org7181570">Fission function environments</h3>
 <ul>
 <li>Container images</li>
 <li>Available for most of the languages</li>
@@ -107,7 +117,7 @@ Talk about how Fission is completely Kubernetes aware, uses CRDs etc
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org89d8bc4">Tracing backends</h2>
+<h2 id="org6071ff5">Tracing backends</h2>
 <ul>
 <li>Collecting the trace events called spans</li>
 <li>Storing as well as visualization of those events</li>
@@ -115,7 +125,7 @@ Talk about how Fission is completely Kubernetes aware, uses CRDs etc
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orgc8dc92d">How to collect these events?</h3>
+<h3 id="org7a369f4">How to collect these events?</h3>
 <ul>
 <li>Instrumenting your code</li>
 <li>Client libraries built according to OpenTracing standards</li>
@@ -125,7 +135,7 @@ Talk about how Fission is completely Kubernetes aware, uses CRDs etc
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org8416c27">Introducing GaS</h2>
+<h2 id="orge2a06ca">Introducing GaS</h2>
 <p>
 <i>Greetings as Service</i>
 </p>
@@ -141,10 +151,19 @@ Talk about how Fission is completely Kubernetes aware, uses CRDs etc
 
 </ul>
 </section>
+<section id="slide-sec-">
+<h3 id="org3d9b060">Components of GaS</h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="gas_architecture.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+</section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org433b20a">Let's trace things</h2>
+<h2 id="orgbe3aa51">Let's trace things</h2>
 <ul>
 <li>Instrumenting each function code?</li>
 <li>Environments to the rescue</li>
@@ -154,7 +173,7 @@ Talk about how Fission is completely Kubernetes aware, uses CRDs etc
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org00a9d11">Modifying the Python environment</h2>
+<h2 id="org9faef29">Modifying the Python environment</h2>
 <ul>
 <li>Uses Flask as HTTP server</li>
 <li><code>server.py</code> loads user defined functions</li>
@@ -175,7 +194,7 @@ Directory structure
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orgc0e3cb6"></h3>
+<h3 id="org7304aad"></h3>
 <p>
 <code>/specialize</code> in <code>server.py</code>
 </p>
@@ -199,7 +218,7 @@ Directory structure
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgcffdf2c"></h3>
+<h3 id="org3abcebd"></h3>
 <p>
 <code>initialize_tracing</code> in <code>lib/tracing.py</code>
 </p>
@@ -228,14 +247,15 @@ Directory structure
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org2766235">Visualization in Jaeger</h2>
+<h2 id="org5f27961">Visualization in Jaeger</h2>
 <ul>
 <li>Spans are not linked together</li>
+<li><a href="faas-tracing-1.mp4">faas-tracing-1.mp4</a></li>
 
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org6a150db"></h3>
+<h3 id="orgfcbff42"></h3>
 <p>
 Spans of greeter function
 </p>
@@ -247,7 +267,7 @@ Spans of greeter function
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org5ae1faa"></h3>
+<h3 id="org426c782"></h3>
 <p>
 Spans of image function
 </p>
@@ -261,7 +281,7 @@ Spans of image function
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org79682ed">Linking spans together</h2>
+<h2 id="orga8b12ae">Linking spans together</h2>
 <ul>
 <li>Context propagation</li>
 <li>Passing context over the wire</li>
@@ -269,7 +289,7 @@ Spans of image function
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orgf37456a">Modifying Kafka MQT of Fission</h3>
+<h3 id="org7e79831">Modifying Kafka MQT of Fission</h3>
 <p>
 <i>More about MQT of Fission</i>
 </p>
@@ -280,7 +300,7 @@ Spans of image function
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org0b3a199"></h3>
+<h3 id="orgfcb38a5"></h3>
 
 <div class="figure">
 <p><img src="kafka_header_support_full_image.png" alt="kafka_header_support_full_image.png" />
@@ -288,7 +308,7 @@ Spans of image function
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgb9c4250">Running the service again</h3>
+<h3 id="org305eecb">Running the service again</h3>
 
 <div class="figure">
 <p><img src="linked_spans.png" alt="linked_spans.png" />
@@ -296,7 +316,7 @@ Spans of image function
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgb9993ba"></h3>
+<h3 id="org4b981e2"></h3>
 
 <div class="figure">
 <p><img src="trace_graph_child_of.png" alt="trace_graph_child_of.png" />
@@ -306,7 +326,7 @@ Spans of image function
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgbb87dd1">Wrong timestamps on spans</h2>
+<h2 id="org03c70cb">Wrong timestamps on spans</h2>
 <ul>
 <li>ClockSkew adjustments</li>
 <li>Using <code>FOLLOWS_FROM</code> reference instead CHILD_OF</li>
@@ -314,7 +334,7 @@ Spans of image function
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org0a6568f">Adding support for references in <code>jaeger-client-python</code></h3>
+<h3 id="orgd922727">Adding support for references in <code>jaeger-client-python</code></h3>
 
 <div class="figure">
 <p><img src="jaeger-client-python-references-support.png" alt="jaeger-client-python-references-support.png" />
@@ -322,7 +342,7 @@ Spans of image function
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org4f66a6e">Modified <code>tracing.py</code></h3>
+<h3 id="orga33ae7a">Modified <code>tracing.py</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">...</span>
@@ -339,7 +359,7 @@ logger.info(<span style="color: #2d9574;">"created new span_ctx: %s"</span>, spa
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgb929d80"></h3>
+<h3 id="org152fdad"></h3>
 
 <div class="figure">
 <p><img src="linked_spans_timeline.png" alt="linked_spans_timeline.png" />
@@ -347,7 +367,7 @@ logger.info(<span style="color: #2d9574;">"created new span_ctx: %s"</span>, spa
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org75e7b2c"></h3>
+<h3 id="org1cce549"></h3>
 
 <div class="figure">
 <p><img src="trace_graph_time_follows_from.png" alt="trace_graph_time_follows_from.png" />
@@ -357,7 +377,7 @@ logger.info(<span style="color: #2d9574;">"created new span_ctx: %s"</span>, spa
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orge2af96e">Things learned</h2>
+<h2 id="org87c200d">Things learned</h2>
 <ul>
 <li>We may encounter duplicate trace Ids
 <ul>
@@ -374,12 +394,12 @@ reference</li>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org0758524">Questions</h2>
+<h2 id="org8d209ce">Questions</h2>
 </section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgf82c770">References</h2>
+<h2 id="org6ba28c8">References</h2>
 <ul>
 <li>GaS is inspired by
 <a href="https://github.com/PacktPublishing/Mastering-Distributed-Tracing/tree/master/Chapter04">PacktPublishing/Mastering-Distributed-Tracing/Chapter04</a></li>

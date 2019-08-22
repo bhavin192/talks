@@ -8,7 +8,7 @@
 
   Bhavin Gandhi
 
-  bhavin[at]infracloud.io
+  bhavin192[at]geeksocket.in
 
   [[https://twitter.com/_bhavin192][@_bhavin192]]
 
@@ -17,16 +17,19 @@
   - Treating services as products
   - More easy to manage
   - What about debugging things?
+** 
+   [[file:microservices.svg]]
 * Observability
   - Logs
   - Metrics
   - Traces
 * Functions on Kubernetes
   - Fission
+  - Kubernetes native
   #+BEGIN_NOTES
   Talk about how Fission is completely Kubernetes aware, uses CRDs etc
   #+END_NOTES
-** Components
+** Resources
    - Trigger
    - Environment
    - Function
@@ -47,6 +50,8 @@
     - Greeter
     - Image
   - Using Kafka in between
+** Components of GaS
+   [[file:gas_architecture.svg]]
 * Let's trace things
   - Instrumenting each function code?
   - Environments to the rescue
@@ -105,6 +110,7 @@
    #+END_SRC
 * Visualization in Jaeger
   - Spans are not linked together
+  - [[file:faas-tracing-1.mp4]]
 ** 
    Spans of greeter function
 
