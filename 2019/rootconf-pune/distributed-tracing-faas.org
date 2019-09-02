@@ -8,41 +8,75 @@
 
   Bhavin Gandhi
 
-  bhavin192[at]geeksocket.in
+  bhavin192[at][[https://geeksocket.in][geeksocket.in]]
 
   [[https://twitter.com/_bhavin192][@_bhavin192]]
 
-  [[https://geeksocket.in][geeksocket.in]]
 * Microservices?
   - Treating services as products
   - More easy to manage
   - What about debugging things?
 ** 
    [[file:microservices.svg]]
+* Monitoring
+  Is the service working?
+
+  Let's keep checking for that
+** Up for Microservices?
+   They are never 100% up
+** 
+   #+BEGIN_QUOTE
+   Nines don’t matter if users aren’t happy.
+
+     —[[https://red.ht/2FMZcMZ][Charity Majors]]
+   #+END_QUOTE
 * Observability
-  - Logs
-  - Metrics
-  - Traces
-* Functions on Kubernetes
-  - Fission
-  - Kubernetes native
-  #+BEGIN_NOTES
-  Talk about how Fission is completely Kubernetes aware, uses CRDs etc
-  #+END_NOTES
-** Resources
-   - Trigger
-   - Environment
-   - Function
-** Fission function environments
-   - Container images
-   - Available for most of the languages
-   - Extensible
-* Tracing backends
-  - Collecting the trace events called spans
-  - Storing as well as visualization of those events
-** How to collect these events?
-   - Instrumenting your code
-   - Client libraries built according to OpenTracing standards
+  Being able to get view of system
+
+  Helps to understand your system
+** 
+   #+BEGIN_QUOTE
+   Stop reverse engineering applications and start monitoring from the inside.
+
+     —[[https://vimeo.com/173610242][Kelsey Hightower, Monitorama 2016]]
+   #+END_QUOTE
+   #+BEGIN_NOTES
+   Instrumentation is done to achieve this
+   #+END_NOTES
+** Pillars of Observability
+   - Logging
+   - Metrics monitoring
+   - Tracing
+** Logging
+   Events, errors occurred in applications
+   
+   The limits of logging
+   
+   Signal to noise ratio
+   
+   Serve for problems predicted in advanced
+   
+   #+BEGIN_NOTES
+   - Logs are hard to scale when there are more number or requests are
+     coming in.
+   - Log aggregation pipeline becomes bottleneck for scaling as well.
+   #+END_NOTES
+** Metrics monitoring
+   Numerical information about what's happening
+
+   Help to predict the behavior
+** Tracing
+   Path taken by an user's request
+
+   Connecting individual components
+   #+BEGIN_NOTES
+   - When all the microservices are dependent, getting the call tree
+   - Solving cascading failures
+   - Individual component metrics/logs say that everything is fine but
+     there is still some latency
+   #+END_NOTES
+** Tracing in Serverless/FaaS
+   # TODO: add details here
 * Introducing GaS
   /Greetings as Service/
   - Frontend
@@ -52,8 +86,38 @@
   - Using Kafka in between
 ** Components of GaS
    [[file:gas_architecture.svg]]
+** 
+   [[file:gas_architecture_1.jpg]]
+* Functions on Kubernetes
+  - Fission
+  - Kubernetes native
+  #+BEGIN_NOTES
+  - Fission is completely Kubernetes aware, uses CRDs etc
+  #+END_NOTES
+** Fission functions
+   - Function code
+   - One entry point
+** Fission function environments
+   - Container images
+   - Available for most of the languages
+   - Extensible
+** Function trigger
+   - Actions to invoke function execution
+   - Supports HTTP and message queues
+** 
+   [[file:fission_components.jpg]]
+* Introducing detectives
+  [[file:detectives.jpg]]
+  
+  /Image credits: [[https://branding.cncf.io/][CNCF Branding]] & [[https://zipkin.io/pages/community.html#logos][Zipkin Community: Logos]]/
+** Tracing backends
+   - Collecting the trace events called spans
+   - Storing as well as visualization of those events
+** How to collect these events?
+   - Instrumenting your code
+   - Client libraries built according to OpenTracing standards
 * Let's trace things
-  - Instrumenting each function code?
+  - Instrumenting each function's code?
   - Environments to the rescue
 * Modifying the Python environment
   - Uses Flask as HTTP server
@@ -72,41 +136,49 @@
 ** 
    ~/specialize~ in ~server.py~
    #+BEGIN_SRC python
-     # ...
      from lib.tracing import initialize_tracing
-     # ...
+     …
      @self.route('/specialize', methods=['POST'])
      def load():
 	 # load user function from codepath
-	 codepath = '/userfunc/user'
-	 userfunc = (imp.load_source('user', codepath)).main
-	 if os.getenv('ENABLE_TRACING') is not None:
-	     self.userfunc = initialize_tracing(userfunc)
-	 else:
-	     self.userfunc = userfunc
+	 userfunc = …
+	 # Wrap userfunc with tracing instrumentation
+	 self.userfunc = initialize_tracing(userfunc)
 	 return ""
-     # ...
    #+END_SRC
+   #+BEGIN_NOTES
+   - When environment Pods run they don't have function code in them
+   - ~/specialize~ is called so that code mounted inside Pod is
+     imported
+   #+END_NOTES
 ** 
    ~initialize_tracing~ in ~lib/tracing.py~
    #+BEGIN_SRC python
    def initialize_tracing(func):
        def inner():
-	   fission_func_name = request.headers.get("X-Fission-Function-Name",
-						   "name")
-	   span_name = fission_func_name + "-span"
-           tracer = _init_tracer(fission_func_name)
-	   span_ctx = tracer.extract(Format.HTTP_HEADERS, request.headers)
-	   with tracer.start_span(span_name, child_of=span_ctx) as span:
-	       span.set_tag("generated-by", "lib.tracing")
-	       generated_headers = dict()
-	       tracer.inject(span, Format.HTTP_HEADERS, generated_headers)
-	       # User may want to set tags on span or use the generated_headers
-	       g.span = span
-	       g.generated_headers = generated_headers
-	       func_resp = func()
+           …
+	   func_resp = func()
 	   return func_resp
        return inner
+   #+END_SRC
+** 
+   Creating the ~tracer~ object
+   #+BEGIN_SRC python
+   def inner():
+       …
+       tracer = _init_tracer(fission_func_name)
+       …
+       return func_resp
+   #+END_SRC
+** 
+   Starting the trace event using ~with~ block
+   #+BEGIN_SRC python
+   def inner():
+       …
+       with tracer.start_span(span_name, child_of=span_ctx) as span:
+           …
+           func_resp = func()
+       return func_resp
    #+END_SRC
 * Visualization in Jaeger
   - Spans are not linked together
@@ -122,10 +194,49 @@
 * Linking spans together
   - Context propagation
   - Passing context over the wire
+# TODO: add a block diagram here; should show the flow of inject and
+# extract operations
+** ~extract~ operation
+   1. Incoming request to the function
+      #+BEGIN_EXAMPLE
+      …
+      trace-id: 1234abcd
+      #+END_EXAMPLE
+   2. Create object of span context using ~tracer.extract()~
+   3. Start a new span with span context as parent
+      ~tracer.start_span()~
+# Should add image here?
+** ~inject~ operation
+   4. Create headers for further requests made by user code
+      ~tracer.inject()~
+   5. Save the current span and new headers in Flask's global ~g~
+** Context propagation in ~tracing.py~
+   #+BEGIN_SRC python
+   def inner():
+       …
+       span_ctx = tracer.extract(Format.HTTP_HEADERS, request.headers)
+       with tracer.start_span(span_name, child_of=span_ctx) as span:
+           …
+	   generated_headers = dict()
+	   tracer.inject(span, Format.HTTP_HEADERS, generated_headers)
+	   # User may want to set tags on span or use the generated_headers
+	   g.span = span
+	   g.generated_headers = generated_headers
+           …
+           func_resp = func()
+       return func_resp
+   #+END_SRC
+   #+BEGIN_NOTES
+   - Using Flask's global oject g so that users can leverage the
+     instrumented code
+     - Setting tags
+     - Creating child spans etc
+   #+END_NOTES
 ** Modifying Kafka MQT of Fission
    /More about MQT of Fission/
    - New records are sent as HTTP request to functions
    - No support for Kafka record headers
+# TODO: image of MQT to HTTP request workflow
 ** 
    [[file:kafka_header_support_full_image.png]]
 ** Running the service again
@@ -135,36 +246,51 @@
 * Wrong timestamps on spans
   - ClockSkew adjustments
   - Using ~FOLLOWS_FROM~ reference instead CHILD_OF
+# TODO: image of gantt chart showing child_of;
+# https://opentracing.io/specification/#the-opentracing-data-model
 ** Adding support for references in ~jaeger-client-python~
    [[file:jaeger-client-python-references-support.png]]
 ** Modified ~tracing.py~
    #+BEGIN_SRC python
-     # ...
      span_ctx = tracer.extract(Format.HTTP_HEADERS, request.headers)
-     logger.info("created new span_ctx: %s", span_ctx)
      # passing it as reference instead of child_of relation as we
      # have async calls to services
      span_reference = follows_from(referenced_context=span_ctx)
-     response = None
      with tracer.start_span(span_name, references=span_reference) as span:
-	 # ...
+         …
 	 return response
    #+END_SRC
 ** 
    [[file:linked_spans_timeline.png]]
 ** 
    [[file:trace_graph_time_follows_from.png]]
-* Things learned
+* 
+  ~tracer.close()~ from ~jaeger-client-python~
+  - Spans are submitted asynchronously
+  - ~tracer.close()~ is not fully synchronous
+  - [[https://github.com/jaegertracing/jaeger-client-python/issues/229#issuecomment-451363106][#229 (comment)]], [[https://github.com/jaegertracing/jaeger-client-python/issues/50#issuecomment-394922333][#50 (comment)]]
+* Watch out for these
   - We may encounter duplicate trace Ids
     - Use 128bit trace Ids ([[https://github.com/jaegertracing/jaeger-client-python/pull/230][PR#230]])
   - While working with asynchronous applications use ~FOLLOWS_FROM~
     reference
-  - ~Tracer.close()~ is not fully synchronous ([[https://github.com/jaegertracing/jaeger-client-python/issues/229#issuecomment-451363106][#229 (comment)]], [[https://github.com/jaegertracing/jaeger-client-python/issues/50#issuecomment-394922333][#50
-    (comment)]])
+  - Using TCP or HTTP to send the tracing events instead of UDP
+  #+BEGIN_NOTES
+  - These are some of the things you might want to consider while
+    implementing similar setup in other platforms
+  #+END_NOTES
+* Debugging an issue in GaS
 * Questions
 * References
   - GaS is inspired by
     [[https://github.com/PacktPublishing/Mastering-Distributed-Tracing/tree/master/Chapter04][PacktPublishing/Mastering-Distributed-Tracing/Chapter04]]
   - [[https://www.packtpub.com/networking-and-servers/mastering-distributed-tracing][Mastering Distributed Tracing]] by Yuri Shkuro
+  - [[https://www.nginx.com/resources/library/cloud-native-devops-with-kubernetes/][Cloud Native DevOps With Kubernetes]] by John Arundel & Justin
+    Domingus
   - [[https://www.jaegertracing.io]]
   - [[https://fission.io]]
+* 
+  These slides are released publicly under
+
+   [[https://creativecommons.org/licenses/by-sa/4.0/][Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA
+  4.0)]]
