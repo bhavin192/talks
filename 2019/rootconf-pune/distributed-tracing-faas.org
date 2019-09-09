@@ -76,7 +76,9 @@
      there is still some latency
    #+END_NOTES
 ** Tracing in Serverless/FaaS
-   # TODO: add details here
+   # TODO: improve this
+   - Abstracted infrastructure
+   - Shortlived nature of functions
 * Introducing GaS
   /Greetings as Service/
   - Frontend
@@ -93,6 +95,8 @@
   - Kubernetes native
   #+BEGIN_NOTES
   - Fission is completely Kubernetes aware, uses CRDs etc
+  - We will be focusing on Fission but can be adopted to other
+    platforms
   #+END_NOTES
 ** Fission functions
    - Function code
@@ -104,6 +108,9 @@
 ** Function trigger
    - Actions to invoke function execution
    - Supports HTTP and message queues
+   #+BEGIN_NOTES
+   - Triggers are of 4 types as of now
+   #+END_NOTES
 ** 
    [[file:fission_components.jpg]]
 * Introducing detectives
@@ -180,6 +187,10 @@
            func_resp = func()
        return func_resp
    #+END_SRC
+   #+BEGIN_NOTES
+   - We create the tracer, start the span, run user function and then
+     stop the span
+   #+END_NOTES
 * Visualization in Jaeger
   - Spans are not linked together
   - [[file:faas-tracing-1.mp4]]
@@ -227,7 +238,7 @@
        return func_resp
    #+END_SRC
    #+BEGIN_NOTES
-   - Using Flask's global oject g so that users can leverage the
+   - Using Flask's global object g so that users can leverage the
      instrumented code
      - Setting tags
      - Creating child spans etc
@@ -236,6 +247,11 @@
    /More about MQT of Fission/
    - New records are sent as HTTP request to functions
    - No support for Kafka record headers
+   #+BEGIN_NOTES
+   - In case of HTTP we can send the context over wire using HTTP
+     headers
+   - But in case of Kafka queus how we can pass on these?
+   #+END_NOTES
 # TODO: image of MQT to HTTP request workflow
 ** 
    [[file:kafka_header_support_full_image.png]]
@@ -269,17 +285,17 @@
   - Spans are submitted asynchronously
   - ~tracer.close()~ is not fully synchronous
   - [[https://github.com/jaegertracing/jaeger-client-python/issues/229#issuecomment-451363106][#229 (comment)]], [[https://github.com/jaegertracing/jaeger-client-python/issues/50#issuecomment-394922333][#50 (comment)]]
+* Debugging an issue in GaS
 * Watch out for these
-  - We may encounter duplicate trace Ids
-    - Use 128bit trace Ids ([[https://github.com/jaegertracing/jaeger-client-python/pull/230][PR#230]])
+  - Use 128bit trace Ids as we may encounter duplicate trace Ids
   - While working with asynchronous applications use ~FOLLOWS_FROM~
     reference
   - Using TCP or HTTP to send the tracing events instead of UDP
   #+BEGIN_NOTES
+  - Adding 128bit trace id support in jaeger-client-python, ([[https://github.com/jaegertracing/jaeger-client-python/pull/230][PR#230]])
   - These are some of the things you might want to consider while
     implementing similar setup in other platforms
   #+END_NOTES
-* Debugging an issue in GaS
 * Questions
 * References
   - GaS is inspired by
@@ -289,6 +305,10 @@
     Domingus
   - [[https://www.jaegertracing.io]]
   - [[https://fission.io]]
+* 
+  bhavin192[at][[https://geeksocket.in][geeksocket.in]]
+
+  [[https://twitter.com/_bhavin192][@_bhavin192]]
 * 
   These slides are released publicly under
 

@@ -28,7 +28,7 @@
 <div class="slides">
 <section>
 <section id="slide-sec-">
-<h2 id="orgf9db69f">Distributed tracing and FaaS?</h2>
+<h2 id="orge3f1509">Distributed tracing and FaaS?</h2>
 <p>
 <i>Tracing Fission functions with Jaeger</i>
 </p>
@@ -49,7 +49,7 @@ bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org9f4cd78">Microservices?</h2>
+<h2 id="orgfbc6501">Microservices?</h2>
 <ul>
 <li>Treating services as products</li>
 <li>More easy to manage</li>
@@ -58,7 +58,7 @@ bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orgdb2d1ab"></h3>
+<h3 id="org84b9e2c"></h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="microservices.svg" class="org-svg">
@@ -69,7 +69,7 @@ Sorry, your browser does not support SVG.</object>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org9584d6b">Monitoring</h2>
+<h2 id="orgab617aa">Monitoring</h2>
 <p>
 Is the service working?
 </p>
@@ -79,13 +79,13 @@ Let's keep checking for that
 </p>
 </section>
 <section id="slide-sec-">
-<h3 id="orgda50fb0">Up for Microservices?</h3>
+<h3 id="org4771a95">Up for Microservices?</h3>
 <p>
 They are never 100% up
 </p>
 </section>
 <section id="slide-sec-">
-<h3 id="orgf3f89fc"></h3>
+<h3 id="org3d91f52"></h3>
 <blockquote nil>
 <p>
 Nines don’t matter if users aren’t happy.
@@ -99,7 +99,7 @@ Nines don’t matter if users aren’t happy.
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org3e0aaf0">Observability</h2>
+<h2 id="org78c2526">Observability</h2>
 <p>
 Being able to get view of system
 </p>
@@ -109,7 +109,7 @@ Helps to understand your system
 </p>
 </section>
 <section id="slide-sec-">
-<h3 id="org26d091a"></h3>
+<h3 id="org79c8b6b"></h3>
 <blockquote nil>
 <p>
 Stop reverse engineering applications and start monitoring from the inside.
@@ -127,7 +127,7 @@ Instrumentation is done to achieve this
 </aside>
 </section>
 <section id="slide-sec-">
-<h3 id="org4490c0a">Pillars of Observability</h3>
+<h3 id="orgd5492e1">Pillars of Observability</h3>
 <ul>
 <li>Logging</li>
 <li>Metrics monitoring</li>
@@ -136,7 +136,7 @@ Instrumentation is done to achieve this
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org8ae6341">Logging</h3>
+<h3 id="orge8accfb">Logging</h3>
 <p>
 Events, errors occurred in applications
 </p>
@@ -164,7 +164,7 @@ coming in.</li>
 </aside>
 </section>
 <section id="slide-sec-">
-<h3 id="orgb8b55fa">Metrics monitoring</h3>
+<h3 id="org5e8386e">Metrics monitoring</h3>
 <p>
 Numerical information about what's happening
 </p>
@@ -174,7 +174,7 @@ Help to predict the behavior
 </p>
 </section>
 <section id="slide-sec-">
-<h3 id="org15d2646">Tracing</h3>
+<h3 id="orge463e38">Tracing</h3>
 <p>
 Path taken by an user's request
 </p>
@@ -194,12 +194,17 @@ there is still some latency</li>
 </aside>
 </section>
 <section id="slide-sec-">
-<h3 id="org8ef41f2">Tracing in Serverless/FaaS</h3>
+<h3 id="org3bd327a">Tracing in Serverless/FaaS</h3>
+<ul>
+<li>Abstracted infrastructure</li>
+<li>Shortlived nature of functions</li>
+
+</ul>
 </section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org20dcadf">Introducing GaS</h2>
+<h2 id="org32a2bcc">Introducing GaS</h2>
 <p>
 <i>Greetings as Service</i>
 </p>
@@ -216,7 +221,7 @@ there is still some latency</li>
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org013ce13">Components of GaS</h3>
+<h3 id="orgeb7970b">Components of GaS</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="gas_architecture.svg" class="org-svg">
@@ -225,7 +230,7 @@ Sorry, your browser does not support SVG.</object>
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgbff2055"></h3>
+<h3 id="orgf4b1c18"></h3>
 
 <div class="figure">
 <p><img src="gas_architecture_1.jpg" alt="gas_architecture_1.jpg" />
@@ -235,7 +240,7 @@ Sorry, your browser does not support SVG.</object>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orge6bc2b3">Functions on Kubernetes</h2>
+<h2 id="org99f6f1f">Functions on Kubernetes</h2>
 <ul>
 <li>Fission</li>
 <li>Kubernetes native</li>
@@ -244,13 +249,15 @@ Sorry, your browser does not support SVG.</object>
 <aside class="notes">
 <ul>
 <li>Fission is completely Kubernetes aware, uses CRDs etc</li>
+<li>We will be focusing on Fission but can be adopted to other
+platforms</li>
 
 </ul>
 
 </aside>
 </section>
 <section id="slide-sec-">
-<h3 id="orgfacb0a1">Fission functions</h3>
+<h3 id="org9425cb4">Fission functions</h3>
 <ul>
 <li>Function code</li>
 <li>One entry point</li>
@@ -258,7 +265,7 @@ Sorry, your browser does not support SVG.</object>
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org41d2db2">Fission function environments</h3>
+<h3 id="org7a3de18">Fission function environments</h3>
 <ul>
 <li>Container images</li>
 <li>Available for most of the languages</li>
@@ -267,15 +274,22 @@ Sorry, your browser does not support SVG.</object>
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org8fdf123">Function trigger</h3>
+<h3 id="org3e95a7a">Function trigger</h3>
 <ul>
 <li>Actions to invoke function execution</li>
 <li>Supports HTTP and message queues</li>
 
 </ul>
+<aside class="notes">
+<ul>
+<li>Triggers are of 4 types as of now</li>
+
+</ul>
+
+</aside>
 </section>
 <section id="slide-sec-">
-<h3 id="org2c2f572"></h3>
+<h3 id="orga5ac491"></h3>
 
 <div class="figure">
 <p><img src="fission_components.jpg" alt="fission_components.jpg" />
@@ -285,7 +299,7 @@ Sorry, your browser does not support SVG.</object>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgae1c867">Introducing detectives</h2>
+<h2 id="org2c6d884">Introducing detectives</h2>
 
 <div class="figure">
 <p><img src="detectives.jpg" alt="detectives.jpg" />
@@ -297,7 +311,7 @@ Sorry, your browser does not support SVG.</object>
 </p>
 </section>
 <section id="slide-sec-">
-<h3 id="org247cdea">Tracing backends</h3>
+<h3 id="org2c6cef2">Tracing backends</h3>
 <ul>
 <li>Collecting the trace events called spans</li>
 <li>Storing as well as visualization of those events</li>
@@ -305,7 +319,7 @@ Sorry, your browser does not support SVG.</object>
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orga02bd37">How to collect these events?</h3>
+<h3 id="orgf6717b0">How to collect these events?</h3>
 <ul>
 <li>Instrumenting your code</li>
 <li>Client libraries built according to OpenTracing standards</li>
@@ -315,7 +329,7 @@ Sorry, your browser does not support SVG.</object>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgb6db274">Let's trace things</h2>
+<h2 id="org9e2c39f">Let's trace things</h2>
 <ul>
 <li>Instrumenting each function's code?</li>
 <li>Environments to the rescue</li>
@@ -325,7 +339,7 @@ Sorry, your browser does not support SVG.</object>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgc064f02">Modifying the Python environment</h2>
+<h2 id="org3a2f95c">Modifying the Python environment</h2>
 <ul>
 <li>Uses Flask as HTTP server</li>
 <li><code>server.py</code> loads user defined functions</li>
@@ -346,7 +360,7 @@ Directory structure
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org07f4893"></h3>
+<h3 id="orgbab1fb4"></h3>
 <p>
 <code>/specialize</code> in <code>server.py</code>
 </p>
@@ -374,7 +388,7 @@ imported</li>
 </aside>
 </section>
 <section id="slide-sec-">
-<h3 id="orgcadb28b"></h3>
+<h3 id="org4d2b00e"></h3>
 <p>
 <code>initialize_tracing</code> in <code>lib/tracing.py</code>
 </p>
@@ -390,7 +404,7 @@ imported</li>
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgc048400"></h3>
+<h3 id="org8412d2e"></h3>
 <p>
 Creating the <code>tracer</code> object
 </p>
@@ -405,7 +419,7 @@ Creating the <code>tracer</code> object
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org081b3a3"></h3>
+<h3 id="org0336cb6"></h3>
 <p>
 Starting the trace event using <code>with</code> block
 </p>
@@ -419,11 +433,19 @@ Starting the trace event using <code>with</code> block
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> func_resp
 </pre>
 </div>
+<aside class="notes">
+<ul>
+<li>We create the tracer, start the span, run user function and then
+stop the span</li>
+
+</ul>
+
+</aside>
 </section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgcb8ed0e">Visualization in Jaeger</h2>
+<h2 id="org57835eb">Visualization in Jaeger</h2>
 <ul>
 <li>Spans are not linked together</li>
 <li><a href="faas-tracing-1.mp4">faas-tracing-1.mp4</a></li>
@@ -431,7 +453,7 @@ Starting the trace event using <code>with</code> block
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orgafff3e3"></h3>
+<h3 id="org6456d85"></h3>
 <p>
 Spans of greeter function
 </p>
@@ -443,7 +465,7 @@ Spans of greeter function
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org12245bf"></h3>
+<h3 id="org568e982"></h3>
 <p>
 Spans of image function
 </p>
@@ -457,7 +479,7 @@ Spans of image function
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org77807b4">Linking spans together</h2>
+<h2 id="org8f64d8d">Linking spans together</h2>
 <ul>
 <li>Context propagation</li>
 <li>Passing context over the wire</li>
@@ -465,7 +487,7 @@ Spans of image function
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="org06ea7fb"><code>extract</code> operation</h3>
+<h3 id="org8a6b06f"><code>extract</code> operation</h3>
 <ol>
 <li><p>
 Incoming request to the function
@@ -481,7 +503,7 @@ trace-id: 1234abcd
 </ol>
 </section>
 <section id="slide-sec-">
-<h3 id="org39b246d"><code>inject</code> operation</h3>
+<h3 id="orge52ea7c"><code>inject</code> operation</h3>
 <ol>
 <li>Create headers for further requests made by user code
 <code>tracer.inject()</code></li>
@@ -490,7 +512,7 @@ trace-id: 1234abcd
 </ol>
 </section>
 <section id="slide-sec-">
-<h3 id="org7781a88">Context propagation in <code>tracing.py</code></h3>
+<h3 id="org621a058">Context propagation in <code>tracing.py</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
@@ -510,7 +532,7 @@ trace-id: 1234abcd
 </div>
 <aside class="notes">
 <ul>
-<li>Using Flask's global oject g so that users can leverage the
+<li>Using Flask's global object g so that users can leverage the
 instrumented code
 <ul>
 <li>Setting tags</li>
@@ -523,7 +545,7 @@ instrumented code
 </aside>
 </section>
 <section id="slide-sec-">
-<h3 id="orgd593c82">Modifying Kafka MQT of Fission</h3>
+<h3 id="org523fc52">Modifying Kafka MQT of Fission</h3>
 <p>
 <i>More about MQT of Fission</i>
 </p>
@@ -532,9 +554,18 @@ instrumented code
 <li>No support for Kafka record headers</li>
 
 </ul>
+<aside class="notes">
+<ul>
+<li>In case of HTTP we can send the context over wire using HTTP
+headers</li>
+<li>But in case of Kafka queus how we can pass on these?</li>
+
+</ul>
+
+</aside>
 </section>
 <section id="slide-sec-">
-<h3 id="orgd0cb8ec"></h3>
+<h3 id="org8849731"></h3>
 
 <div class="figure">
 <p><img src="kafka_header_support_full_image.png" alt="kafka_header_support_full_image.png" />
@@ -542,7 +573,7 @@ instrumented code
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org57b97c2">Running the service again</h3>
+<h3 id="org862ea3a">Running the service again</h3>
 
 <div class="figure">
 <p><img src="linked_spans.png" alt="linked_spans.png" />
@@ -550,7 +581,7 @@ instrumented code
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org1ceb827"></h3>
+<h3 id="org764dfdd"></h3>
 
 <div class="figure">
 <p><img src="trace_graph_child_of.png" alt="trace_graph_child_of.png" />
@@ -560,7 +591,7 @@ instrumented code
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org5748689">Wrong timestamps on spans</h2>
+<h2 id="org94de72e">Wrong timestamps on spans</h2>
 <ul>
 <li>ClockSkew adjustments</li>
 <li>Using <code>FOLLOWS_FROM</code> reference instead CHILD_OF</li>
@@ -568,7 +599,7 @@ instrumented code
 </ul>
 </section>
 <section id="slide-sec-">
-<h3 id="orgcfc94eb">Adding support for references in <code>jaeger-client-python</code></h3>
+<h3 id="org1291d0c">Adding support for references in <code>jaeger-client-python</code></h3>
 
 <div class="figure">
 <p><img src="jaeger-client-python-references-support.png" alt="jaeger-client-python-references-support.png" />
@@ -576,7 +607,7 @@ instrumented code
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgfd2caf3">Modified <code>tracing.py</code></h3>
+<h3 id="orgc9422b5">Modified <code>tracing.py</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #7590db;">span_ctx</span> = tracer.extract(Format.HTTP_HEADERS, request.headers)
@@ -590,7 +621,7 @@ instrumented code
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgb05073f"></h3>
+<h3 id="org01108e4"></h3>
 
 <div class="figure">
 <p><img src="linked_spans_timeline.png" alt="linked_spans_timeline.png" />
@@ -598,7 +629,7 @@ instrumented code
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org57e26fc"></h3>
+<h3 id="org33bc445"></h3>
 
 <div class="figure">
 <p><img src="trace_graph_time_follows_from.png" alt="trace_graph_time_follows_from.png" />
@@ -608,7 +639,7 @@ instrumented code
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org7376345"></h2>
+<h2 id="org2d8e039"></h2>
 <p>
 <code>tracer.close()</code> from <code>jaeger-client-python</code>
 </p>
@@ -622,13 +653,14 @@ instrumented code
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org38c7592">Watch out for these</h2>
+<h2 id="org6a0d359">Debugging an issue in GaS</h2>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org9de5027">Watch out for these</h2>
 <ul>
-<li>We may encounter duplicate trace Ids
-<ul>
-<li>Use 128bit trace Ids (<a href="https://github.com/jaegertracing/jaeger-client-python/pull/230">PR#230</a>)</li>
-
-</ul></li>
+<li>Use 128bit trace Ids as we may encounter duplicate trace Ids</li>
 <li>While working with asynchronous applications use <code>FOLLOWS_FROM</code>
 reference</li>
 <li>Using TCP or HTTP to send the tracing events instead of UDP</li>
@@ -636,6 +668,7 @@ reference</li>
 </ul>
 <aside class="notes">
 <ul>
+<li>Adding 128bit trace id support in jaeger-client-python, (<a href="https://github.com/jaegertracing/jaeger-client-python/pull/230">PR#230</a>)</li>
 <li>These are some of the things you might want to consider while
 implementing similar setup in other platforms</li>
 
@@ -646,17 +679,12 @@ implementing similar setup in other platforms</li>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org16f777f">Debugging an issue in GaS</h2>
+<h2 id="org9f13061">Questions</h2>
 </section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgebb2e15">Questions</h2>
-</section>
-</section>
-<section>
-<section id="slide-sec-">
-<h2 id="org5872f16">References</h2>
+<h2 id="org6c656ca">References</h2>
 <ul>
 <li>GaS is inspired by
 <a href="https://github.com/PacktPublishing/Mastering-Distributed-Tracing/tree/master/Chapter04">PacktPublishing/Mastering-Distributed-Tracing/Chapter04</a></li>
@@ -671,7 +699,19 @@ Domingus</li>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orga9a27c7"></h2>
+<h2 id="org331a1be"></h2>
+<p>
+bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
+</p>
+
+<p>
+<a href="https://twitter.com/_bhavin192">@_bhavin192</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgcbbbee0"></h2>
 <p>
 These slides are released publicly under
 </p>
