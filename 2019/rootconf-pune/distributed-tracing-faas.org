@@ -8,10 +8,7 @@
 
   Bhavin Gandhi
 
-  bhavin192[at][[https://geeksocket.in][geeksocket.in]]
-
-  [[https://twitter.com/_bhavin192][@_bhavin192]]
-
+  [[https://infracloud.io][InfraCloud Technologies]]
 * Microservices?
   - Treating services as products
   - More easy to manage
@@ -205,22 +202,21 @@
 * Linking spans together
   - Context propagation
   - Passing context over the wire
-# TODO: add a block diagram here; should show the flow of inject and
-# extract operations
 ** ~extract~ operation
    1. Incoming request to the function
       #+BEGIN_EXAMPLE
       …
-      trace-id: 1234abcd
+      trace-ctx: 1234abcd:5678
       #+END_EXAMPLE
    2. Create object of span context using ~tracer.extract()~
    3. Start a new span with span context as parent
       ~tracer.start_span()~
-# Should add image here?
 ** ~inject~ operation
    4. Create headers for further requests made by user code
       ~tracer.inject()~
    5. Save the current span and new headers in Flask's global ~g~
+** ~extract~ and ~inject~ flow
+   [[file:extract_inject_flow.jpg]]
 ** Context propagation in ~tracing.py~
    #+BEGIN_SRC python
    def inner():
@@ -235,13 +231,17 @@
 	   g.generated_headers = generated_headers
            …
            func_resp = func()
-       return func_resp
+	   # Add headers from generated_headers to response
+	   …
+       return resp
    #+END_SRC
    #+BEGIN_NOTES
    - Using Flask's global object g so that users can leverage the
      instrumented code
      - Setting tags
      - Creating child spans etc
+   - func_resp is again wrapped and we add generated_headers to the
+     response
    #+END_NOTES
 ** Modifying Kafka MQT of Fission
    /More about MQT of Fission/
@@ -252,18 +252,34 @@
      headers
    - But in case of Kafka queus how we can pass on these?
    #+END_NOTES
-# TODO: image of MQT to HTTP request workflow
+** 
+   [[file:fission_mqt_flow.jpg]]
 ** 
    [[file:kafka_header_support_full_image.png]]
 ** Running the service again
+   [[file:faas-tracing-2.mp4]]
+** 
    [[file:linked_spans.png]]
 ** 
    [[file:trace_graph_child_of.png]]
 * Wrong timestamps on spans
   - ClockSkew adjustments
   - Using ~FOLLOWS_FROM~ reference instead CHILD_OF
-# TODO: image of gantt chart showing child_of;
-# https://opentracing.io/specification/#the-opentracing-data-model
+** 
+   #+BEGIN_SRC 
+   ––|–––––––|–––––––|–––––––|–––––––|–––––––|–> time
+
+    [-Parent Span--------------]
+         [-Child Span A----]
+          [-Child Span B----]   
+
+
+    [-Parent Span-]
+                [-Child Span-]	  
+   #+END_SRC
+   
+
+   /Diagram credits: [[https://opentracing.io/specification/#references-between-spans][OpenTracing Specification]]. [[https://github.com/opentracing/specification/blob/master/LICENSE][Apache License 2.0]]/
 ** Adding support for references in ~jaeger-client-python~
    [[file:jaeger-client-python-references-support.png]]
 ** Modified ~tracing.py~
