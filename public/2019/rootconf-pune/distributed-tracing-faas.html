@@ -27,8 +27,8 @@
 <div class="reveal">
 <div class="slides">
 <section>
-<section id="slide-sec-">
-<h2 id="org5f7d6ac">Distributed tracing and FaaS?</h2>
+<section id="slide-orgc1952ac">
+<h2 id="orgc1952ac">Distributed tracing and FaaS?</h2>
 <p>
 <i>Tracing Fission functions with Jaeger</i>
 </p>
@@ -43,8 +43,8 @@ Bhavin Gandhi
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org43726f6">Microservices?</h2>
+<section id="slide-orga4ed915">
+<h2 id="orga4ed915">Microservices?</h2>
 <ul>
 <li>Treating services as products</li>
 <li>More easy to manage</li>
@@ -52,8 +52,8 @@ Bhavin Gandhi
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org4b909a1"></h3>
+<section id="slide-org3879265">
+<h3 id="org3879265"></h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="microservices.svg" class="org-svg">
@@ -63,8 +63,8 @@ Sorry, your browser does not support SVG.</object>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org76ad7ec">Monitoring</h2>
+<section id="slide-org953a80a">
+<h2 id="org953a80a">Monitoring</h2>
 <p>
 Is the service working?
 </p>
@@ -73,14 +73,14 @@ Is the service working?
 Let's keep checking for that
 </p>
 </section>
-<section id="slide-sec-">
-<h3 id="org1b3b565">Up for Microservices?</h3>
+<section id="slide-org511abb9">
+<h3 id="org511abb9">Up for Microservices?</h3>
 <p>
 They are never 100% up
 </p>
 </section>
-<section id="slide-sec-">
-<h3 id="org6dafe60"></h3>
+<section id="slide-org543a4d7">
+<h3 id="org543a4d7"></h3>
 <blockquote nil>
 <p>
 Nines don’t matter if users aren’t happy.
@@ -93,8 +93,8 @@ Nines don’t matter if users aren’t happy.
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="orgf86ccdb">Observability</h2>
+<section id="slide-org9605e3d">
+<h2 id="org9605e3d">Observability</h2>
 <p>
 Being able to get view of system
 </p>
@@ -103,8 +103,8 @@ Being able to get view of system
 Helps to understand your system
 </p>
 </section>
-<section id="slide-sec-">
-<h3 id="orgfac06a9"></h3>
+<section id="slide-org9612a9e">
+<h3 id="org9612a9e"></h3>
 <blockquote nil>
 <p>
 Stop reverse engineering applications and start monitoring from the inside.
@@ -121,8 +121,8 @@ Instrumentation is done to achieve this
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="org985dd68">Pillars of Observability</h3>
+<section id="slide-org78f3b2e">
+<h3 id="org78f3b2e">Pillars of Observability</h3>
 <ul>
 <li>Logging</li>
 <li>Metrics monitoring</li>
@@ -130,8 +130,8 @@ Instrumentation is done to achieve this
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="orgdab0742">Logging</h3>
+<section id="slide-orgfb8da07">
+<h3 id="orgfb8da07">Logging</h3>
 <p>
 Events, errors occurred in applications
 </p>
@@ -158,8 +158,8 @@ coming in.</li>
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="orge9a9abd">Metrics monitoring</h3>
+<section id="slide-orgf10adfc">
+<h3 id="orgf10adfc">Metrics monitoring</h3>
 <p>
 Numerical information about what's happening
 </p>
@@ -168,8 +168,8 @@ Numerical information about what's happening
 Help to predict the behavior
 </p>
 </section>
-<section id="slide-sec-">
-<h3 id="orga461792">Tracing</h3>
+<section id="slide-org450e432">
+<h3 id="org450e432">Tracing</h3>
 <p>
 Path taken by an user's request
 </p>
@@ -188,8 +188,8 @@ there is still some latency</li>
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="org6c3127e">Tracing in Serverless/FaaS</h3>
+<section id="slide-org85b1bd7">
+<h3 id="org85b1bd7">Tracing in Serverless/FaaS</h3>
 <ul>
 <li>Abstracted infrastructure</li>
 <li>Shortlived nature of functions</li>
@@ -198,13 +198,12 @@ there is still some latency</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="orgf6b1ecd">Introducing GaS</h2>
+<section id="slide-org38c08f1">
+<h2 id="org38c08f1">Introducing GaS</h2>
 <p>
 <i>Greetings as Service</i>
 </p>
 <ul>
-<li>Frontend</li>
 <li>Two Functions
 <ul>
 <li>Greeter</li>
@@ -215,8 +214,8 @@ there is still some latency</li>
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org194186b">Components of GaS</h3>
+<section id="slide-orgfbc9768">
+<h3 id="orgfbc9768">Components of GaS</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="gas_architecture.svg" class="org-svg">
@@ -224,8 +223,8 @@ Sorry, your browser does not support SVG.</object>
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org55bef64"></h3>
+<section id="slide-orgf9dd707">
+<h3 id="orgf9dd707"></h3>
 
 <div class="figure">
 <p><img src="gas_architecture_1.jpg" alt="gas_architecture_1.jpg" />
@@ -234,8 +233,8 @@ Sorry, your browser does not support SVG.</object>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="orgf68e939">Functions on Kubernetes</h2>
+<section id="slide-org92b97fc">
+<h2 id="org92b97fc">Functions on Kubernetes</h2>
 <ul>
 <li>Fission</li>
 <li>Kubernetes native</li>
@@ -251,16 +250,16 @@ platforms</li>
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="org1c012a0">Fission functions</h3>
+<section id="slide-org18b1cd9">
+<h3 id="org18b1cd9">Fission functions</h3>
 <ul>
 <li>Function code</li>
 <li>One entry point</li>
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org3e474fd">Fission function environments</h3>
+<section id="slide-org5b58768">
+<h3 id="org5b58768">Fission function environments</h3>
 <ul>
 <li>Container images</li>
 <li>Available for most of the languages</li>
@@ -268,8 +267,8 @@ platforms</li>
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org9fb2740">Function trigger</h3>
+<section id="slide-orga75ccb8">
+<h3 id="orga75ccb8">Function trigger</h3>
 <ul>
 <li>Actions to invoke function execution</li>
 <li>Supports HTTP and message queues</li>
@@ -283,8 +282,8 @@ platforms</li>
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="orge357aab"></h3>
+<section id="slide-org61d28f1">
+<h3 id="org61d28f1"></h3>
 
 <div class="figure">
 <p><img src="fission_components.jpg" alt="fission_components.jpg" />
@@ -293,8 +292,8 @@ platforms</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org8014673">Introducing detectives</h2>
+<section id="slide-orgdbcc00f">
+<h2 id="orgdbcc00f">Introducing detectives</h2>
 
 <div class="figure">
 <p><img src="detectives.jpg" alt="detectives.jpg" />
@@ -305,16 +304,16 @@ platforms</li>
 <i>Image credits: <a href="https://branding.cncf.io/">CNCF Branding</a> &amp; <a href="https://zipkin.io/pages/community.html#logos">Zipkin Community: Logos</a></i>
 </p>
 </section>
-<section id="slide-sec-">
-<h3 id="org1707555">Tracing backends</h3>
+<section id="slide-org7dc47a7">
+<h3 id="org7dc47a7">Tracing backends</h3>
 <ul>
 <li>Collecting the trace events called spans</li>
 <li>Storing as well as visualization of those events</li>
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org68379ab">How to collect these events?</h3>
+<section id="slide-org4783f42">
+<h3 id="org4783f42">How to collect these events?</h3>
 <ul>
 <li>Instrumenting your code</li>
 <li>Client libraries built according to OpenTracing standards</li>
@@ -323,8 +322,8 @@ platforms</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="orga95fca6">Let's trace things</h2>
+<section id="slide-org5560736">
+<h2 id="org5560736">Let's trace things</h2>
 <ul>
 <li>Instrumenting each function's code?</li>
 <li>Environments to the rescue</li>
@@ -333,8 +332,8 @@ platforms</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org261ad21">Modifying the Python environment</h2>
+<section id="slide-org2af6992">
+<h2 id="org2af6992">Modifying the Python environment</h2>
 <ul>
 <li>Uses Flask as HTTP server</li>
 <li><code>server.py</code> loads user defined functions</li>
@@ -354,14 +353,14 @@ Directory structure
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org67d8b90"></h3>
+<section id="slide-org4497e05">
+<h3 id="org4497e05"></h3>
 <p>
 <code>/specialize</code> in <code>server.py</code>
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #4f97d7; font-weight: bold;">from</span> lib.tracing <span style="color: #4f97d7; font-weight: bold;">import</span> initialize_tracing
+<pre  class="src src-python"><code trim><span style="color: #4f97d7; font-weight: bold;">from</span> lib.tracing <span style="color: #4f97d7; font-weight: bold;">import</span> initialize_tracing
 &#8230;
 @<span style="color: #4f97d7; font-weight: bold;">self</span>.route(<span style="color: #2d9574;">'/specialize'</span>, methods=[<span style="color: #2d9574;">'POST'</span>])
 <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">load</span>():
@@ -370,7 +369,7 @@ Directory structure
 <span style="background-color: #292e34;"> </span>   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Wrap userfunc with tracing instrumentation</span>
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">self</span>.userfunc = initialize_tracing(userfunc)
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #2d9574;">""</span>
-</pre>
+</code></pre>
 </div>
 <aside class="notes">
 <ul>
@@ -382,51 +381,51 @@ imported</li>
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="org4012561"></h3>
+<section id="slide-org9648628">
+<h3 id="org9648628"></h3>
 <p>
 <code>initialize_tracing</code> in <code>lib/tracing.py</code>
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">initialize_tracing</span>(func):
+<pre  class="src src-python"><code trim><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">initialize_tracing</span>(func):
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
         &#8230;
         <span style="color: #7590db;">func_resp</span> = func()
         <span style="color: #4f97d7; font-weight: bold;">return</span> func_resp
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> inner
-</pre>
+</code></pre>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org0a7c406"></h3>
+<section id="slide-org6bda960">
+<h3 id="org6bda960"></h3>
 <p>
 Creating the <code>tracer</code> object
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
+<pre  class="src src-python"><code trim><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
 <span style="background-color: #292e34;"> </span>   &#8230;
 <span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">tracer</span> = _init_tracer(fission_func_name)
 <span style="background-color: #292e34;"> </span>   &#8230;
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> func_resp
-</pre>
+</code></pre>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org4ac5dde"></h3>
+<section id="slide-org6c9f96a">
+<h3 id="org6c9f96a"></h3>
 <p>
 Starting the trace event using <code>with</code> block
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
+<pre  class="src src-python"><code trim><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
 <span style="background-color: #292e34;"> </span>   &#8230;
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">with</span> tracer.start_span(span_name, child_of=span_ctx) <span style="color: #4f97d7; font-weight: bold;">as</span> span:
         &#8230;
         <span style="color: #7590db;">func_resp</span> = func()
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> func_resp
-</pre>
+</code></pre>
 </div>
 <aside class="notes">
 <ul>
@@ -439,16 +438,16 @@ stop the span</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org00b9f0b">Visualization in Jaeger</h2>
+<section id="slide-orgc31644c">
+<h2 id="orgc31644c">Visualization in Jaeger</h2>
 <ul>
 <li>Spans are not linked together</li>
 <li><a href="faas-tracing-1.mp4">faas-tracing-1.mp4</a></li>
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="orgfbe46e0"></h3>
+<section id="slide-org81d21b5">
+<h3 id="org81d21b5"></h3>
 <p>
 Spans of greeter function
 </p>
@@ -459,8 +458,8 @@ Spans of greeter function
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org96c51de"></h3>
+<section id="slide-org3b855c5">
+<h3 id="org3b855c5"></h3>
 <p>
 Spans of image function
 </p>
@@ -473,16 +472,16 @@ Spans of image function
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org84c6a91">Linking spans together</h2>
+<section id="slide-org10905de">
+<h2 id="org10905de">Linking spans together</h2>
 <ul>
 <li>Context propagation</li>
 <li>Passing context over the wire</li>
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org821c8b2"><code>extract</code> operation</h3>
+<section id="slide-org7d48114">
+<h3 id="org7d48114"><code>extract</code> operation</h3>
 <ol>
 <li><p>
 Incoming request to the function
@@ -497,8 +496,8 @@ trace-ctx: 1234abcd:5678
 
 </ol>
 </section>
-<section id="slide-sec-">
-<h3 id="orgcb0f65f"><code>inject</code> operation</h3>
+<section id="slide-org1c4eba7">
+<h3 id="org1c4eba7"><code>inject</code> operation</h3>
 <ol>
 <li>Create headers for further requests made by user code
 <code>tracer.inject()</code></li>
@@ -506,19 +505,19 @@ trace-ctx: 1234abcd:5678
 
 </ol>
 </section>
-<section id="slide-sec-">
-<h3 id="orgf118f38"><code>extract</code> and <code>inject</code> flow</h3>
+<section id="slide-org6995f31">
+<h3 id="org6995f31"><code>extract</code> and <code>inject</code> flow</h3>
 
 <div class="figure">
 <p><img src="extract_inject_flow.jpg" alt="extract_inject_flow.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org7212605">Context propagation in <code>tracing.py</code></h3>
+<section id="slide-org8174892">
+<h3 id="org8174892">Context propagation in <code>tracing.py</code></h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
+<pre  class="src src-python"><code trim><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inner</span>():
 <span style="background-color: #292e34;"> </span>   &#8230;
 <span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">span_ctx</span> = tracer.extract(Format.HTTP_HEADERS, request.headers)
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">with</span> tracer.start_span(span_name, child_of=span_ctx) <span style="color: #4f97d7; font-weight: bold;">as</span> span:
@@ -533,7 +532,7 @@ trace-ctx: 1234abcd:5678
         <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Add headers from generated_headers to response</span>
         &#8230;
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> resp
-</pre>
+</code></pre>
 </div>
 <aside class="notes">
 <ul>
@@ -551,8 +550,8 @@ response</li>
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="orge45c2b3">Modifying Kafka MQT of Fission</h3>
+<section id="slide-orgcb6ee30">
+<h3 id="orgcb6ee30">Modifying Kafka MQT of Fission</h3>
 <p>
 <i>More about MQT of Fission</i>
 </p>
@@ -571,38 +570,38 @@ headers</li>
 
 </aside>
 </section>
-<section id="slide-sec-">
-<h3 id="orgc5c14a9"></h3>
+<section id="slide-org974eb0e">
+<h3 id="org974eb0e"></h3>
 
 <div class="figure">
 <p><img src="fission_mqt_flow.jpg" alt="fission_mqt_flow.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org7d67a3f"></h3>
+<section id="slide-org5292814">
+<h3 id="org5292814"></h3>
 
 <div class="figure">
 <p><img src="kafka_header_support_full_image.png" alt="kafka_header_support_full_image.png" />
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org5d748ee">Running the service again</h3>
+<section id="slide-org8a7c9ae">
+<h3 id="org8a7c9ae">Running the service again</h3>
 <p>
 <a href="faas-tracing-2.mp4">faas-tracing-2.mp4</a>
 </p>
 </section>
-<section id="slide-sec-">
-<h3 id="org77f4615"></h3>
+<section id="slide-org291bb38">
+<h3 id="org291bb38"></h3>
 
 <div class="figure">
 <p><img src="linked_spans.png" alt="linked_spans.png" />
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="orgde4f5e0"></h3>
+<section id="slide-org5d652d8">
+<h3 id="org5d652d8"></h3>
 
 <div class="figure">
 <p><img src="trace_graph_child_of.png" alt="trace_graph_child_of.png" />
@@ -611,16 +610,16 @@ headers</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org21eccc6">Wrong timestamps on spans</h2>
+<section id="slide-org0f2e58c">
+<h2 id="org0f2e58c">Wrong timestamps on spans</h2>
 <ul>
 <li>ClockSkew adjustments</li>
-<li>Using <code>FOLLOWS_FROM</code> reference instead CHILD_OF</li>
+<li>Using <code>FOLLOWS_FROM</code> reference instead <code>CHILD_OF</code></li>
 
 </ul>
 </section>
-<section id="slide-sec-">
-<h3 id="org1654fc9"></h3>
+<section id="slide-org5537840">
+<h3 id="org5537840"></h3>
 <pre  class="example">
 ––|–––––––|–––––––|–––––––|–––––––|–––––––|–&gt; time
 
@@ -638,38 +637,38 @@ headers</li>
 <i>Diagram credits: <a href="https://opentracing.io/specification/#references-between-spans">OpenTracing Specification</a>. <a href="https://github.com/opentracing/specification/blob/master/LICENSE">Apache License 2.0</a></i>
 </p>
 </section>
-<section id="slide-sec-">
-<h3 id="orgb5788d8">Adding support for references in <code>jaeger-client-python</code></h3>
+<section id="slide-orgae77439">
+<h3 id="orgae77439">Adding support for references in <code>jaeger-client-python</code></h3>
 
 <div class="figure">
 <p><img src="jaeger-client-python-references-support.png" alt="jaeger-client-python-references-support.png" />
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org7f05915">Modified <code>tracing.py</code></h3>
+<section id="slide-org2c5bbd5">
+<h3 id="org2c5bbd5">Modified <code>tracing.py</code></h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #7590db;">span_ctx</span> = tracer.extract(Format.HTTP_HEADERS, request.headers)
+<pre  class="src src-python"><code trim><span style="color: #7590db;">span_ctx</span> = tracer.extract(Format.HTTP_HEADERS, request.headers)
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">passing it as reference instead of child_of relation as we</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">have async calls to services</span>
 <span style="color: #7590db;">span_reference</span> = follows_from(referenced_context=span_ctx)
 <span style="color: #4f97d7; font-weight: bold;">with</span> tracer.start_span(span_name, references=span_reference) <span style="color: #4f97d7; font-weight: bold;">as</span> span:
 <span style="background-color: #292e34;"> </span>   &#8230;
 <span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> response
-</pre>
+</code></pre>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="orgfc7743a"></h3>
+<section id="slide-org7d38ec5">
+<h3 id="org7d38ec5"></h3>
 
 <div class="figure">
 <p><img src="linked_spans_timeline.png" alt="linked_spans_timeline.png" />
 </p>
 </div>
 </section>
-<section id="slide-sec-">
-<h3 id="org37fcda1"></h3>
+<section id="slide-orgd8e39a8">
+<h3 id="orgd8e39a8"></h3>
 
 <div class="figure">
 <p><img src="trace_graph_time_follows_from.png" alt="trace_graph_time_follows_from.png" />
@@ -678,8 +677,8 @@ headers</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org3e917dd"></h2>
+<section id="slide-orgec76096">
+<h2 id="orgec76096"></h2>
 <p>
 <code>tracer.close()</code> from <code>jaeger-client-python</code>
 </p>
@@ -692,13 +691,16 @@ headers</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org5aec8de">Debugging an issue in GaS</h2>
+<section id="slide-org027ad06">
+<h2 id="org027ad06">Debugging an issue in GaS</h2>
+<p>
+<a href="faas-tracing-debug.mp4">faas-tracing-debug.mp4</a>
+</p>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org8f9a2cd">Watch out for these</h2>
+<section id="slide-org5577d51">
+<h2 id="org5577d51">Watch out for these</h2>
 <ul>
 <li>Use 128bit trace Ids as we may encounter duplicate trace Ids</li>
 <li>While working with asynchronous applications use <code>FOLLOWS_FROM</code>
@@ -718,13 +720,25 @@ implementing similar setup in other platforms</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org07ebd3f">Questions</h2>
+<section id="slide-orgab9cfb5">
+<h2 id="orgab9cfb5">Questions</h2>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="org3139bc1">References</h2>
+<section id="slide-orgee8aae0">
+<h2 id="orgee8aae0"></h2>
+<p>
+bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
+</p>
+
+<p>
+<a href="https://twitter.com/_bhavin192">@_bhavin192</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org1b7aa4c">
+<h2 id="org1b7aa4c">References</h2>
 <ul>
 <li>GaS is inspired by
 <a href="https://github.com/PacktPublishing/Mastering-Distributed-Tracing/tree/master/Chapter04">PacktPublishing/Mastering-Distributed-Tracing/Chapter04</a></li>
@@ -738,20 +752,8 @@ Domingus</li>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<h2 id="orgf532af4"></h2>
-<p>
-bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
-</p>
-
-<p>
-<a href="https://twitter.com/_bhavin192">@_bhavin192</a>
-</p>
-</section>
-</section>
-<section>
-<section id="slide-sec-">
-<h2 id="org30bfac9"></h2>
+<section id="slide-org494b3a8">
+<h2 id="org494b3a8"></h2>
 <p>
 These slides are released publicly under
 </p>
@@ -764,26 +766,12 @@ These slides are released publicly under
 </section>
 </div>
 </div>
-<script src="https://revealjs.com/lib/js/head.min.js"></script>
 <script src="https://revealjs.com/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 'c/t',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server

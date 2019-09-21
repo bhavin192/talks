@@ -78,7 +78,6 @@
    - Shortlived nature of functions
 * Introducing GaS
   /Greetings as Service/
-  - Frontend
   - Two Functions
     - Greeter
     - Image
@@ -264,7 +263,7 @@
    [[file:trace_graph_child_of.png]]
 * Wrong timestamps on spans
   - ClockSkew adjustments
-  - Using ~FOLLOWS_FROM~ reference instead CHILD_OF
+  - Using ~FOLLOWS_FROM~ reference instead ~CHILD_OF~
 ** 
    #+BEGIN_SRC 
    ––|–––––––|–––––––|–––––––|–––––––|–––––––|–> time
@@ -302,6 +301,7 @@
   - ~tracer.close()~ is not fully synchronous
   - [[https://github.com/jaegertracing/jaeger-client-python/issues/229#issuecomment-451363106][#229 (comment)]], [[https://github.com/jaegertracing/jaeger-client-python/issues/50#issuecomment-394922333][#50 (comment)]]
 * Debugging an issue in GaS
+  [[file:faas-tracing-debug.mp4]]
 * Watch out for these
   - Use 128bit trace Ids as we may encounter duplicate trace Ids
   - While working with asynchronous applications use ~FOLLOWS_FROM~
@@ -313,6 +313,10 @@
     implementing similar setup in other platforms
   #+END_NOTES
 * Questions
+* 
+  bhavin192[at][[https://geeksocket.in][geeksocket.in]]
+
+  [[https://twitter.com/_bhavin192][@_bhavin192]]
 * References
   - GaS is inspired by
     [[https://github.com/PacktPublishing/Mastering-Distributed-Tracing/tree/master/Chapter04][PacktPublishing/Mastering-Distributed-Tracing/Chapter04]]
@@ -321,10 +325,6 @@
     Domingus
   - [[https://www.jaegertracing.io]]
   - [[https://fission.io]]
-* 
-  bhavin192[at][[https://geeksocket.in][geeksocket.in]]
-
-  [[https://twitter.com/_bhavin192][@_bhavin192]]
 * 
   These slides are released publicly under
 
