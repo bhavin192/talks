@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Mapping the journey from VM-based deployments to Kubernetes</title>
+<meta name="author" content="(Bhavin Gandhi)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://revealjs.com/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://revealjs.com/css/theme/black.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://revealjs.com/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<section id="slide-org245dade">
+<h2 id="org245dade">VM based deployments to Kubernetes</h2>
+<p>
+<i>Starting your journey with Captain Kube</i>
+</p>
+
+<p>
+Bhavin Gandhi
+</p>
+
+<p>
+<a href="https://infracloud.io">InfraCloud Technologies</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org2c86b2a">
+<h2 id="org2c86b2a">The beginning</h2>
+<div class="outline-text-2" id="text-org2c86b2a">
+</div>
+</section>
+<section id="slide-orgcde0cc7">
+<h3 id="orgcde0cc7"></h3>
+
+<div class="figure">
+<p><img src="phippy-01-1.png" alt="phippy-01-1.png" />
+</p>
+</div>
+
+<p>
+<i>Image Credits: <a href="https://phippy.io/">phippy.io</a> (CC-BY 4.0)</i>
+</p>
+</section>
+<section id="slide-org5fa2c1f">
+<h3 id="org5fa2c1f"></h3>
+<ul>
+<li>Application with minimum business logic</li>
+<li>Less number of users</li>
+<li>Small team of engineers</li>
+
+</ul>
+</section>
+<section id="slide-org1151f86">
+<h3 id="org1151f86">Infrastructure</h3>
+<ul>
+<li>Deployed as few Virtual Machines (VMs)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga54ec2e">
+<h2 id="orga54ec2e">The growth</h2>
+<ul>
+<li>More users</li>
+<li>Demand for new features</li>
+
+</ul>
+</section>
+<section id="slide-org2867a6d">
+<h3 id="org2867a6d"></h3>
+<ul>
+<li>More number of engineers</li>
+<li>Need of moving faster with new features</li>
+
+</ul>
+</section>
+<section id="slide-org73847c5">
+<h3 id="org73847c5">What about the infrastructure?</h3>
+<p>
+Should the way we deploy things change?
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orga6cf79b">
+<h2 id="orga6cf79b">Continuous Delivery with VMs</h2>
+<ul>
+<li>Building VM images for application updates</li>
+<li>Using tools like Ansible, Puppet</li>
+
+</ul>
+</section>
+<section id="slide-org2f5c01c">
+<h3 id="org2f5c01c">Shortcomings</h3>
+</section>
+<section id="slide-orga1c1a4e">
+<h3 id="orga1c1a4e">Time consuming</h3>
+<ul>
+<li>VMs take time to boot</li>
+<li>Building VM images</li>
+<li>OS updates</li>
+
+</ul>
+</section>
+<section id="slide-org232559d">
+<h3 id="org232559d">Auto scaling</h3>
+<ul>
+<li>No metrics about actual consumption of application</li>
+<li>Scaling based on VMs memory/CPU usage</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga694185">
+<h2 id="orga694185">Introducing Kubernetes</h2>
+<blockquote nil>
+<p>
+“Kubernetes” is the Greek word for a ship’s captain. 
+</p>
+
+<p>
+The Kubernetes project focuses on building a robust platform for running thousands of containers in production.
+</p>
+</blockquote>
+</section>
+<section id="slide-org13968f8">
+<h3 id="org13968f8">What Kubernetes offers</h3>
+<ul>
+<li class="fragment appear">Networking, scheduling, load balancing, autoscaling</li>
+<li class="fragment appear">Declarative approach to deployments</li>
+<li class="fragment appear">Abstraction over underlying infrastructure</li>
+<li class="fragment appear">And many more.</li>
+
+</ul>
+</section>
+<section id="slide-org31e1130">
+<h3 id="org31e1130">How Kubernetes helps</h3>
+<ul>
+<li>No need to manage individual VMs</li>
+<li>Common/Standard industry patterns for deploying things</li>
+<li>No vendor lock in</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgd5de768">
+<h2 id="orgd5de768">Migrating to Kubernetes</h2>
+</section>
+</section>
+<section>
+<section id="slide-org475fa3c">
+<h2 id="org475fa3c">Containerizing applications</h2>
+
+<div class="figure">
+<p><img src="kubernetes-illustrated-guide-illustration-4-1.png" alt="kubernetes-illustrated-guide-illustration-4-1.png" />
+</p>
+</div>
+
+<p>
+<i>Image Credits: <a href="https://phippy.io/">phippy.io</a> (CC-BY 4.0)</i>
+</p>
+</section>
+<section id="slide-org7ea6709">
+<h3 id="org7ea6709">Containers?</h3>
+<p>
+Isolated processes running with their dependencies
+</p>
+</section>
+<section id="slide-org954a9e5">
+<h3 id="org954a9e5">Best practices</h3>
+<ul>
+<li class="fragment appear">One process per container</li>
+<li class="fragment appear">Try to keep the images lightweight</li>
+<li class="fragment appear">No direct lift and shift from VM images (Packer)</li>
+<li class="fragment appear">Logging to stdout and stderr</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgf68dbd2">
+<h2 id="orgf68dbd2">Ready to sail with Captain Kube?</h2>
+
+<div class="figure">
+<p><img src="kubernetes-illustrated-guide-illustration-6-1.png" alt="kubernetes-illustrated-guide-illustration-6-1.png" />
+</p>
+</div>
+
+<p>
+<i>Image Credits: <a href="https://phippy.io/">phippy.io</a> (CC-BY 4.0)</i>
+</p>
+</section>
+<section id="slide-orgf9b4d0c">
+<h3 id="orgf9b4d0c">Challenges running in Kubernetes</h3>
+<ul>
+<li>Resource limits</li>
+<li>Interprocess communication</li>
+
+</ul>
+</section>
+<section id="slide-orgd45e752">
+<h3 id="orgd45e752">Don't miss this</h3>
+<ul>
+<li class="fragment appear">Health check end points for applications</li>
+<li class="fragment appear">Resource requests and limits for each application</li>
+<li class="fragment appear">Use community Helm charts and operators</li>
+<li class="fragment appear">Namespaces per application or teams</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org4c85676">
+<h2 id="org4c85676">Migration strategies</h2>
+<ul>
+<li>Lift and shift all the applications</li>
+<li>Migrate gradually</li>
+
+</ul>
+</section>
+<section id="slide-org2bbc6b9">
+<h3 id="org2bbc6b9">Migrating gradually</h3>
+<p>
+Start with stateless applications followed by stateful applications
+and then move databases
+</p>
+</section>
+<section id="slide-org2744199">
+<h3 id="org2744199"></h3>
+<ul>
+<li>One application at a time</li>
+<li>One API end point at a time</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga0d2880">
+<h2 id="orga0d2880">Should I run my monoliths?</h2>
+<div class="outline-text-2" id="text-orga0d2880">
+</div>
+</section>
+<section id="slide-orgf9eedcf">
+<h3 id="orgf9eedcf">YES! YES! YES!</h3>
+<p>
+Make sure you containerize them correctly
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org6990693">
+<h2 id="org6990693">Cluster management</h2>
+<div class="outline-text-2" id="text-org6990693">
+</div>
+</section>
+<section id="slide-org551f8ee">
+<h3 id="org551f8ee">Deploying the cluster</h3>
+<ul>
+<li class="fragment appear">Using managed cluster solutions
+<ul>
+<li>GKE, EKS, AKS, …</li>
+
+</ul></li>
+<li class="fragment appear">Self managed clusters
+<ul>
+<li>Rancher, kops, Kubespray, …</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgdc1b06e">
+<h3 id="orgdc1b06e">Backup and restore</h3>
+<ul>
+<li>Use tools like Velero</li>
+
+</ul>
+</section>
+<section id="slide-orgef868f9">
+<h3 id="orgef868f9">Cluster updates</h3>
+</section>
+</section>
+<section>
+<section id="slide-org13328df">
+<h2 id="org13328df">The way ahead</h2>
+<ul>
+<li>Checkout tools from <a href="https://landscape.cncf.io/">CNCF landscape</a></li>
+<li>Prometheus for metrics collection</li>
+<li>Argo for CI/CD</li>
+<li>nginx-ingress to expose services publicly</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org89f16ef">
+<h2 id="org89f16ef">Questions</h2>
+</section>
+</section>
+<section>
+<section id="slide-org0e4d492">
+<h2 id="org0e4d492"></h2>
+<p>
+bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
+</p>
+
+<p>
+<a href="https://twitter.com/_bhavin192">@_bhavin192</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org031dcbb">
+<h2 id="org031dcbb">References</h2>
+<ul>
+<li><a href="https://phippy.io">Phippy and Friends - Cloud Native Computing Foundation</a></li>
+<li><a href="https://www.nginx.com/resources/library/cloud-native-devops-with-kubernetes/">Cloud Native DevOps With Kubernetes</a></li>
+<li><a href="https://kubedex.com/">kubedex.com - Discover and learn about everything Kubernetes</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org6bdcca4">
+<h2 id="org6bdcca4"></h2>
+<p>
+These slides are released publicly under
+</p>
+
+<p>
+ <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA
+4.0)</a>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://revealjs.com/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+slideNumber:"c/t",
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://revealjs.com/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

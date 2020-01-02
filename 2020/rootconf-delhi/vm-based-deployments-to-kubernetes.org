@@ -1,0 +1,132 @@
+#+TITLE: Mapping the journey from VM-based deployments to Kubernetes
+#+AUTHOR: Bhavin Gandhi
+#+EMAIL: @_bhavin192
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t"
+#+REVEAL_THEME: black
+#+OPTIONS: num:nil toc:nil ^:nil
+* VM based deployments to Kubernetes
+  /Starting your journey with Captain Kube/
+
+  Bhavin Gandhi
+
+  [[https://infracloud.io][InfraCloud Technologies]]
+
+* The beginning
+** 
+   [[file:phippy-01-1.png]]
+  
+   /Image Credits: [[https://phippy.io/][phippy.io]] (CC-BY 4.0)/
+** 
+   - Application with minimum business logic
+   - Less number of users
+   - Small team of engineers
+** Infrastructure
+   - Deployed as few Virtual Machines (VMs)
+* The growth
+  - More users
+  - Demand for new features
+** 
+   - More number of engineers
+   - Need of moving faster with new features
+# TODO: confusion about infrastructure/deployment way
+** What about the infrastructure?
+   Should the way we deploy things change?
+* Continuous Delivery with VMs
+  - Building VM images for application updates
+  - Using tools like Ansible, Puppet
+** Shortcomings
+** Time consuming
+   - VMs take time to boot
+   - Building VM images
+   - OS updates
+# TODO: Something is missing here
+** Auto scaling 
+   - No metrics about actual consumption of application
+   - Scaling based on VMs memory/CPU usage
+# TODO: Still feel like flow is not so good
+* Introducing Kubernetes
+  #+BEGIN_QUOTE
+  “Kubernetes” is the Greek word for a ship’s captain. 
+
+  The Kubernetes project focuses on building a robust platform for running thousands of containers in production.
+  #+END_QUOTE
+** What Kubernetes offers
+   #+ATTR_REVEAL: :frag (appear)
+   - Networking, scheduling, load balancing, autoscaling
+   - Declarative approach to deployments
+   - Abstraction over underlying infrastructure
+   - And many more.
+** How Kubernetes helps
+   - No need to manage individual VMs
+   - Common/Standard industry patterns for deploying things
+   - No vendor lock in
+# TODO: how it makes my CD faster?
+* Migrating to Kubernetes
+* Containerizing applications
+  [[file:kubernetes-illustrated-guide-illustration-4-1.png]]
+
+  /Image Credits: [[https://phippy.io/][phippy.io]] (CC-BY 4.0)/
+** Containers?
+   Isolated processes running with their dependencies
+** Best practices
+   #+ATTR_REVEAL: :frag (appear)
+   - One process per container
+   - Try to keep the images lightweight
+   - No direct lift and shift from VM images (Packer)
+   - Logging to stdout and stderr
+* Ready to sail with Captain Kube?
+  [[file:kubernetes-illustrated-guide-illustration-6-1.png]]
+
+  /Image Credits: [[https://phippy.io/][phippy.io]] (CC-BY 4.0)/
+** Challenges running in Kubernetes
+   - Resource limits
+   - Interprocess communication
+** Don't miss this
+   # TODO: - Pod IPs are ephemeral
+   #+ATTR_REVEAL: :frag (appear)
+   - Health check end points for applications
+   - Resource requests and limits for each application
+   - Use community Helm charts and operators
+   - Namespaces per application or teams
+* Migration strategies
+  - Lift and shift all the applications
+  - Migrate gradually
+** Migrating gradually
+   Start with stateless applications followed by stateful applications
+   and then move databases
+** 
+   - One application at a time
+   - One API end point at a time
+   # TODO: talk about ALB/ELB and other load balancer tools
+* Should I run my monoliths?
+** YES! YES! YES!
+   Make sure you containerize them correctly
+* Cluster management
+** Deploying the cluster
+   #+ATTR_REVEAL: :frag (appear)
+   - Using managed cluster solutions
+     - GKE, EKS, AKS, …
+   - Self managed clusters
+     - Rancher, kops, Kubespray, …
+** Backup and restore
+   - Use tools like Velero
+** Cluster updates
+* The way ahead
+  - Checkout tools from [[https://landscape.cncf.io/][CNCF landscape]]
+  - Prometheus for metrics collection
+  - Argo for CI/CD
+  - nginx-ingress to expose services publicly 
+* Questions
+* 
+  bhavin192[at][[https://geeksocket.in][geeksocket.in]]
+
+  [[https://twitter.com/_bhavin192][@_bhavin192]]
+* References
+  - [[https://phippy.io][Phippy and Friends - Cloud Native Computing Foundation]]
+  - [[https://www.nginx.com/resources/library/cloud-native-devops-with-kubernetes/][Cloud Native DevOps With Kubernetes]]
+  - [[https://kubedex.com/][kubedex.com - Discover and learn about everything Kubernetes]]
+* 
+  These slides are released publicly under
+
+   [[https://creativecommons.org/licenses/by-sa/4.0/][Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA
+  4.0)]]
