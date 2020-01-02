@@ -1,0 +1,43 @@
+#+TITLE: From VM based deployments to Kubernetes
+#+OPTIONS: num:nil
+* Title
+  Your journey from VM based deployments to Kubernetes
+  # Kubernetes: it's really not that hard
+* Abstract
+  With growing traffic and user base, the request for new features
+  also grows exponentially. It's very crucial that the development,
+  deployment process grows along the way to sustain. When it comes to
+  Kubernetes and containers it may feel like overwhelming at the
+  beginning. But the efforts worth it to invest time.
+
+  This talk will take you to the journey of migrating your workload
+  from traditional VM based infrastructure to a container based
+  model. It will cover how Kubernetes can help you to move faster. Why
+  one should switch to Kubernetes. It will also cover some gotchas
+  when migrating your applications as well as monoliths to the
+  cluster. The talk will also cover some best practices about running
+  and managing Kubernetes clusters.
+
+* Outline
+  - Overview and shortcomings of traditional VM based CD
+  - What is Kubernetes
+  - Why Kubernetes
+  - Features of Kubernetes
+  - How it makes things move faster
+  - Moving from VM based model to Kubernetes
+    - Challenges
+    - Strategies
+  - Running monoliths in Kubernetes
+  - Cluster management
+    - Cluster backup and recovery
+    - Launching multiple clusters
+  - The way ahead
+* Requirements
+  - N/A
+* Links
+  - https://geeksocket.in/
+  - https://www.infracloud.io/author/bhavin/
+* Speaker bio
+  Bhavin is working with InfraCloud Technologies, Pune. His main area
+  of interest are Free/Libre and Open Source Software, DevSecOps,
+  containers and Kubernetes.

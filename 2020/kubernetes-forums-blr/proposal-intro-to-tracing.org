@@ -1,0 +1,48 @@
+#+TITLE: Introduction to tracing implementation
+#+OPTIONS: toc:nil ^:nil num:nil
+* Session Title
+  - Beginner's guide to distributed tracing
+* Session Format
+  - Solo presentation
+* Level of Expertise for Intended Audience
+  - Beginner (Basic or introductory information)
+* Which Cloud Native Computing Foundation (CNCF) hosted software will your presentation be focused on?
+  - Open Tracing (Incubating)
+  - Jaeger (Incubating)
+* Topic
+  - Observability (includes Fluentd, Prometheus, Jaeger, OpenTracing, Cortex, OpenTelemetry, & Thanos)
+* Session Description
+  Debugging distributed microservices, functions and other systems is
+  not trivial. Beyond the logs and metrics for individual systems,
+  operators and developers need a system which can trace the
+  interaction between systems and an end to end journey of user
+  request. In this introductory talk, Bhavin will start from the
+  basics of distributed tracing and the need for it in cloud native
+  world. He will demonstrate interaction between two services being
+  traced using Jaeger. When we trace the request, we will use various
+  concepts like span, baggage etc along with their explanation. He
+  will then briefly explain various libraries and tools that were used
+  so that you can hack around and try more simpler examples of
+  OpenTracing and use it in your development projects. He will cover
+  simple concept with a working example so that the listener can use
+  that as a starting point to learn more about tracing.
+* Benefits to the Ecosystem
+  Jaeger is a graduated CNCF project and a hands on introduction will
+  benefit the community to get started and start using the
+  project. Similarly the OpenTelemetry project is now a merger of
+  OpenCensus and OpenTracing projects which can be confusing for a
+  newcomer. This talk demonstrates a clear working example and
+  guidelines to use the Jaeger libraries and how
+  OpenTracing/OpenTelemetry projects play a crucial role in building
+  these libraries.
+** Audience
+   - Developers working on distributed architectures and microservices
+** Takeaways
+   - What is distributed tracing
+   - What are all the projects which can help to get tracing in system
+   - Get the idea of how typical distributed tracing system looks like
+* Speaker 1 | Biography
+  Bhavin is working with InfraCloud Technologies, Pune. His main area
+  of interest are Free/Libre and Open Source Software, DevSecOps,
+  containers and Kubernetes. He also contributes to Jaeger's
+  components. He likes to attend and speak at conferences, meetups etc.
