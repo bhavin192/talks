@@ -42,11 +42,19 @@
    - VMs take time to boot
    - Building VM images
    - OS updates
-# TODO: Something is missing here
+   #+BEGIN_NOTES
+   - VMs have complete stack, like Kernel, OS etc
+   - This comes with other configuration overheads
+   - Things like network configurations, packages etc
+   #+END_NOTES
 ** Auto scaling 
    - No metrics about actual consumption of application
    - Scaling based on VMs memory/CPU usage
-# TODO: Still feel like flow is not so good
+   #+BEGIN_NOTES
+   - Things like rolling update
+   - Have to use some kind of hacks or the tools don't really feel
+     natural or fast enough
+   #+END_NOTES
 * Introducing Kubernetes
   #+BEGIN_QUOTE
   “Kubernetes” is the Greek word for a ship’s captain. 
@@ -86,6 +94,10 @@
 ** Challenges running in Kubernetes
    - Resource limits
    - Interprocess communication
+   #+BEGIN_NOTES
+   - Applications getting OOMKilled
+   - Resources are shared (strict about resource utilization)
+   #+END_NOTES
 ** Don't miss this
    #+ATTR_REVEAL: :frag (appear)
    - Pod IPs are ephemeral
@@ -118,8 +130,12 @@
    - Self managed clusters
      - Rancher, kops, Kubespray, …
 ** Backup and restore
-   - Use tools like Velero
+   Use tools like Velero
 ** Cluster updates
+   One minor release every 3 months
+   #+BEGIN_NOTES
+   - [[https://kubernetes.io/docs/setup/release/version-skew-policy/][Kubernetes version and version skew support policy - Kubernetes]]
+   #+END_NOTES
 * The way ahead
   - Checkout tools from [[https://landscape.cncf.io/][CNCF landscape]]
   - Prometheus for metrics collection

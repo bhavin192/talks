@@ -27,8 +27,8 @@
 <div class="reveal">
 <div class="slides">
 <section>
-<section id="slide-orgce02f80">
-<h2 id="orgce02f80">VM based deployments to Kubernetes</h2>
+<section id="slide-orge0cef1c">
+<h2 id="orge0cef1c">VM based deployments to Kubernetes</h2>
 <p>
 <i>Starting your journey with Captain Kube</i>
 </p>
@@ -44,13 +44,13 @@ Bhavin Gandhi
 </section>
 </section>
 <section>
-<section id="slide-org2883e6d">
-<h2 id="org2883e6d">The beginning</h2>
-<div class="outline-text-2" id="text-org2883e6d">
+<section id="slide-org5bcb4b3">
+<h2 id="org5bcb4b3">The beginning</h2>
+<div class="outline-text-2" id="text-org5bcb4b3">
 </div>
 </section>
-<section id="slide-orgc18334b">
-<h3 id="orgc18334b"></h3>
+<section id="slide-orgb56829d">
+<h3 id="orgb56829d"></h3>
 
 <div class="figure">
 <p><img src="phippy-01-1.png" alt="phippy-01-1.png" />
@@ -61,8 +61,8 @@ Bhavin Gandhi
 <i>Image Credits: <a href="https://phippy.io/">phippy.io</a> (CC-BY 4.0)</i>
 </p>
 </section>
-<section id="slide-orgb148b2f">
-<h3 id="orgb148b2f"></h3>
+<section id="slide-org1cf262d">
+<h3 id="org1cf262d"></h3>
 <ul>
 <li>Application with minimum business logic</li>
 <li>Less number of users</li>
@@ -70,8 +70,8 @@ Bhavin Gandhi
 
 </ul>
 </section>
-<section id="slide-orgd523d89">
-<h3 id="orgd523d89">Infrastructure</h3>
+<section id="slide-org0d58132">
+<h3 id="org0d58132">Infrastructure</h3>
 <ul>
 <li>Deployed as few Virtual Machines (VMs)</li>
 
@@ -79,40 +79,40 @@ Bhavin Gandhi
 </section>
 </section>
 <section>
-<section id="slide-org145e04b">
-<h2 id="org145e04b">The growth</h2>
+<section id="slide-org260b183">
+<h2 id="org260b183">The growth</h2>
 <ul>
 <li>More users</li>
 <li>Demand for new features</li>
 
 </ul>
 </section>
-<section id="slide-orgf651cdb">
-<h3 id="orgf651cdb"></h3>
+<section id="slide-org749b0a1">
+<h3 id="org749b0a1"></h3>
 <ul>
 <li>More number of engineers</li>
 <li>Need of moving faster with new features</li>
 
 </ul>
 </section>
-<section id="slide-orgfbdee13">
-<h3 id="orgfbdee13">What about the infrastructure?</h3>
+<section id="slide-orgb6f8a03">
+<h3 id="orgb6f8a03">What about the infrastructure?</h3>
 <p>
 Should the way we deploy things change?
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org09efd0e">
-<h2 id="org09efd0e">Continuous Delivery with VMs</h2>
+<section id="slide-org6470e16">
+<h2 id="org6470e16">Continuous Delivery with VMs</h2>
 <ul>
 <li>Building VM images for application updates</li>
 <li>Using tools like Ansible, Puppet</li>
 
 </ul>
 </section>
-<section id="slide-orgfd6179d">
-<h3 id="orgfd6179d">Shortcomings</h3>
+<section id="slide-orgb09e6fa">
+<h3 id="orgb09e6fa">Shortcomings</h3>
 
 <div class="figure">
 <p><img src="kubernetes-illustrated-guide-illustration-3-1.png" alt="kubernetes-illustrated-guide-illustration-3-1.png" />
@@ -123,27 +123,45 @@ Should the way we deploy things change?
 <i>Image Credits: <a href="https://phippy.io/">phippy.io</a> (CC-BY 4.0)</i>
 </p>
 </section>
-<section id="slide-orgf08476f">
-<h3 id="orgf08476f">Time consuming</h3>
+<section id="slide-orgc128003">
+<h3 id="orgc128003">Time consuming</h3>
 <ul>
 <li>VMs take time to boot</li>
 <li>Building VM images</li>
 <li>OS updates</li>
 
 </ul>
+<aside class="notes">
+<ul>
+<li>VMs have complete stack, like the OS itself</li>
+<li>This comes with other configuration overhead</li>
+<li>Things like network configurations, packages etc.</li>
+
+</ul>
+
+</aside>
 </section>
-<section id="slide-orgf1aea1d">
-<h3 id="orgf1aea1d">Auto scaling</h3>
+<section id="slide-orgbde0607">
+<h3 id="orgbde0607">Auto scaling</h3>
 <ul>
 <li>No metrics about actual consumption of application</li>
 <li>Scaling based on VMs memory/CPU usage</li>
 
 </ul>
+<aside class="notes">
+<ul>
+<li>Things like rolling update</li>
+<li>Have to use some kind of hacks or the tools don't really feel
+natural or fast enough</li>
+
+</ul>
+
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-orga60ddf9">
-<h2 id="orga60ddf9">Introducing Kubernetes</h2>
+<section id="slide-orga923948">
+<h2 id="orga923948">Introducing Kubernetes</h2>
 <blockquote nil>
 <p>
 “Kubernetes” is the Greek word for a ship’s captain. 
@@ -154,8 +172,8 @@ The Kubernetes project focuses on building a robust platform for running thousan
 </p>
 </blockquote>
 </section>
-<section id="slide-orgfb439eb">
-<h3 id="orgfb439eb">What Kubernetes offers</h3>
+<section id="slide-orgc86dba6">
+<h3 id="orgc86dba6">What Kubernetes offers</h3>
 <ul>
 <li class="fragment appear">Networking, scheduling, load balancing, autoscaling</li>
 <li class="fragment appear">Declarative approach to deployments</li>
@@ -164,8 +182,8 @@ The Kubernetes project focuses on building a robust platform for running thousan
 
 </ul>
 </section>
-<section id="slide-orgfbdc5e6">
-<h3 id="orgfbdc5e6">How Kubernetes helps</h3>
+<section id="slide-org6b8696d">
+<h3 id="org6b8696d">How Kubernetes helps</h3>
 <ul>
 <li>No need to manage individual VMs</li>
 <li>Common/Standard industry patterns for deploying things</li>
@@ -182,13 +200,13 @@ The Kubernetes project focuses on building a robust platform for running thousan
 </section>
 </section>
 <section>
-<section id="slide-org6b84af9">
-<h2 id="org6b84af9">Migrating to Kubernetes</h2>
+<section id="slide-org172f208">
+<h2 id="org172f208">Migrating to Kubernetes</h2>
 </section>
 </section>
 <section>
-<section id="slide-org0e4153a">
-<h2 id="org0e4153a">Containerizing applications</h2>
+<section id="slide-orgaaefd0e">
+<h2 id="orgaaefd0e">Containerizing applications</h2>
 
 <div class="figure">
 <p><img src="kubernetes-illustrated-guide-illustration-4-1.png" alt="kubernetes-illustrated-guide-illustration-4-1.png" />
@@ -199,14 +217,14 @@ The Kubernetes project focuses on building a robust platform for running thousan
 <i>Image Credits: <a href="https://phippy.io/">phippy.io</a> (CC-BY 4.0)</i>
 </p>
 </section>
-<section id="slide-orgcca936c">
-<h3 id="orgcca936c">Containers?</h3>
+<section id="slide-orgb5da71b">
+<h3 id="orgb5da71b">Containers?</h3>
 <p>
 Isolated processes running with their dependencies
 </p>
 </section>
-<section id="slide-org97d4194">
-<h3 id="org97d4194">Best practices</h3>
+<section id="slide-org65d9cfb">
+<h3 id="org65d9cfb">Best practices</h3>
 <ul>
 <li class="fragment appear">One process per container</li>
 <li class="fragment appear">Try to keep the images lightweight</li>
@@ -217,8 +235,8 @@ Isolated processes running with their dependencies
 </section>
 </section>
 <section>
-<section id="slide-org1db91de">
-<h2 id="org1db91de">Ready to sail with Captain Kube?</h2>
+<section id="slide-org7d7cea0">
+<h2 id="org7d7cea0">Ready to sail with Captain Kube?</h2>
 
 <div class="figure">
 <p><img src="kubernetes-illustrated-guide-illustration-6-1.png" alt="kubernetes-illustrated-guide-illustration-6-1.png" />
@@ -229,16 +247,24 @@ Isolated processes running with their dependencies
 <i>Image Credits: <a href="https://phippy.io/">phippy.io</a> (CC-BY 4.0)</i>
 </p>
 </section>
-<section id="slide-orgcbefab2">
-<h3 id="orgcbefab2">Challenges running in Kubernetes</h3>
+<section id="slide-org5066128">
+<h3 id="org5066128">Challenges running in Kubernetes</h3>
 <ul>
 <li>Resource limits</li>
 <li>Interprocess communication</li>
 
 </ul>
+<aside class="notes">
+<ul>
+<li>Applications getting OOMKilled</li>
+<li>Resources are shared (strict about resource utilization)</li>
+
+</ul>
+
+</aside>
 </section>
-<section id="slide-org3e1ffc4">
-<h3 id="org3e1ffc4">Don't miss this</h3>
+<section id="slide-org1355d49">
+<h3 id="org1355d49">Don't miss this</h3>
 <ul>
 <li class="fragment appear">Pod IPs are ephemeral</li>
 <li class="fragment appear">Health check end points for applications</li>
@@ -250,23 +276,23 @@ Isolated processes running with their dependencies
 </section>
 </section>
 <section>
-<section id="slide-org5efb552">
-<h2 id="org5efb552">Migration strategies</h2>
+<section id="slide-org08a9cf3">
+<h2 id="org08a9cf3">Migration strategies</h2>
 <ul>
 <li>Lift and shift all the applications</li>
 <li>Migrate gradually</li>
 
 </ul>
 </section>
-<section id="slide-org4368dce">
-<h3 id="org4368dce">Migrating gradually</h3>
+<section id="slide-orgbaba78b">
+<h3 id="orgbaba78b">Migrating gradually</h3>
 <p>
 Start with stateless applications followed by stateful applications
 and then move databases
 </p>
 </section>
-<section id="slide-org42cdfd8">
-<h3 id="org42cdfd8"></h3>
+<section id="slide-orgc5f016c">
+<h3 id="orgc5f016c"></h3>
 <ul>
 <li>One application at a time</li>
 <li>One API end point at a time</li>
@@ -284,26 +310,26 @@ provider. Examples are ALB, ELB, …</li>
 </section>
 </section>
 <section>
-<section id="slide-org010fb5a">
-<h2 id="org010fb5a">Should I run my monoliths?</h2>
-<div class="outline-text-2" id="text-org010fb5a">
+<section id="slide-orga8f677e">
+<h2 id="orga8f677e">Should I run my monoliths?</h2>
+<div class="outline-text-2" id="text-orga8f677e">
 </div>
 </section>
-<section id="slide-orgba0a987">
-<h3 id="orgba0a987">YES! YES! YES!</h3>
+<section id="slide-org1baf85f">
+<h3 id="org1baf85f">YES! YES! YES!</h3>
 <p>
 Make sure you containerize them correctly
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgff82099">
-<h2 id="orgff82099">Cluster management</h2>
-<div class="outline-text-2" id="text-orgff82099">
+<section id="slide-orga105f9f">
+<h2 id="orga105f9f">Cluster management</h2>
+<div class="outline-text-2" id="text-orga105f9f">
 </div>
 </section>
-<section id="slide-org793a51a">
-<h3 id="org793a51a">Deploying the cluster</h3>
+<section id="slide-org98971e4">
+<h3 id="org98971e4">Deploying the cluster</h3>
 <ul>
 <li class="fragment appear">Using managed cluster solutions
 <ul>
@@ -318,20 +344,29 @@ Make sure you containerize them correctly
 
 </ul>
 </section>
-<section id="slide-org8e38af9">
-<h3 id="org8e38af9">Backup and restore</h3>
+<section id="slide-orgf7e9d98">
+<h3 id="orgf7e9d98">Backup and restore</h3>
+<p>
+Use tools like Velero
+</p>
+</section>
+<section id="slide-org667dc5d">
+<h3 id="org667dc5d">Cluster updates</h3>
+<p>
+One minor release every 3 months
+</p>
+<aside class="notes">
 <ul>
-<li>Use tools like Velero</li>
+<li><a href="https://kubernetes.io/docs/setup/release/version-skew-policy/">Kubernetes version and version skew support policy - Kubernetes</a></li>
 
 </ul>
-</section>
-<section id="slide-org56115fd">
-<h3 id="org56115fd">Cluster updates</h3>
+
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-org00e287b">
-<h2 id="org00e287b">The way ahead</h2>
+<section id="slide-org4423e25">
+<h2 id="org4423e25">The way ahead</h2>
 <ul>
 <li>Checkout tools from <a href="https://landscape.cncf.io/">CNCF landscape</a></li>
 <li>Prometheus for metrics collection</li>
@@ -342,13 +377,13 @@ Make sure you containerize them correctly
 </section>
 </section>
 <section>
-<section id="slide-orgcd8b348">
-<h2 id="orgcd8b348">Questions</h2>
+<section id="slide-org88a1ae3">
+<h2 id="org88a1ae3">Questions</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgaf34b6c">
-<h2 id="orgaf34b6c"></h2>
+<section id="slide-org5589bea">
+<h2 id="org5589bea"></h2>
 <p>
 bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
 </p>
@@ -359,8 +394,8 @@ bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
 </section>
 </section>
 <section>
-<section id="slide-org51f616c">
-<h2 id="org51f616c">References</h2>
+<section id="slide-orgaccfc68">
+<h2 id="orgaccfc68">References</h2>
 <ul>
 <li><a href="https://phippy.io">Phippy and Friends - Cloud Native Computing Foundation</a></li>
 <li><a href="https://www.nginx.com/resources/library/cloud-native-devops-with-kubernetes/">Cloud Native DevOps With Kubernetes</a></li>
@@ -371,8 +406,8 @@ bhavin192[at]<a href="https://geeksocket.in">geeksocket.in</a>
 </section>
 </section>
 <section>
-<section id="slide-org7386157">
-<h2 id="org7386157"></h2>
+<section id="slide-org8436879">
+<h2 id="org8436879"></h2>
 <p>
 These slides are released publicly under
 </p>
