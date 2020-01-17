@@ -1,7 +1,7 @@
 #+TITLE: Mapping the journey from VM-based deployments to Kubernetes
 #+AUTHOR: Bhavin Gandhi
 #+EMAIL: @_bhavin192
-#+REVEAL_INIT_OPTIONS: slideNumber:"c/t"
+#+REVEAL_INIT_OPTIONS: width:1368, height:768, slideNumber:'c/t'
 #+REVEAL_THEME: black
 #+OPTIONS: num:nil toc:nil ^:nil
 * VM based deployments to Kubernetes
@@ -35,6 +35,9 @@
   - Building VM images for application updates
   - Using tools like Ansible, Puppet
 ** Shortcomings
+   [[file:kubernetes-illustrated-guide-illustration-3-1.png]]
+
+   /Image Credits: [[https://phippy.io/][phippy.io]] (CC-BY 4.0)/
 ** Time consuming
    - VMs take time to boot
    - Building VM images
@@ -60,7 +63,9 @@
    - No need to manage individual VMs
    - Common/Standard industry patterns for deploying things
    - No vendor lock in
-# TODO: how it makes my CD faster?
+   #+BEGIN_NOTES
+   - Due to declarative approach CD tasks become more easy
+   #+END_NOTES
 * Migrating to Kubernetes
 * Containerizing applications
   [[file:kubernetes-illustrated-guide-illustration-4-1.png]]
@@ -82,8 +87,8 @@
    - Resource limits
    - Interprocess communication
 ** Don't miss this
-   # TODO: - Pod IPs are ephemeral
    #+ATTR_REVEAL: :frag (appear)
+   - Pod IPs are ephemeral
    - Health check end points for applications
    - Resource requests and limits for each application
    - Use community Helm charts and operators
@@ -97,7 +102,11 @@
 ** 
    - One application at a time
    - One API end point at a time
-   # TODO: talk about ALB/ELB and other load balancer tools
+   #+BEGIN_NOTES
+   - To achieve this you can use load balancers from your cloud
+     provider. Examples are ALB, ELB, …
+   - nginx-ingress can be used to achieve this as well
+   #+END_NOTES
 * Should I run my monoliths?
 ** YES! YES! YES!
    Make sure you containerize them correctly
@@ -124,6 +133,7 @@
 * References
   - [[https://phippy.io][Phippy and Friends - Cloud Native Computing Foundation]]
   - [[https://www.nginx.com/resources/library/cloud-native-devops-with-kubernetes/][Cloud Native DevOps With Kubernetes]]
+  - [[https://helm.sh/docs/topics/charts/][Helm | Charts]]
   - [[https://kubedex.com/][kubedex.com - Discover and learn about everything Kubernetes]]
 * 
   These slides are released publicly under
