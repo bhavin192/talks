@@ -1,0 +1,109 @@
+#+TITLE: Building a RepRap 3D printer
+#+AUTHOR: Bhavin Gandhi
+#+EMAIL: geeksocket.in
+#+STARTUP: inlineimages
+* 3D what?
+
+   *3D printers!*
+
+** Something like in Sci-fi movies? ⚛
+
+   [[file:lost-in-space-printed-part.png]]
+   /Credits: Lost in Space (TV Series 2018- )/
+
+** 3D printers on your desk 🚀
+*** Prusa i3
+
+    [[file:MK3_poster_V6.jpg]]
+    /Credits: Josef Průša/
+
+*** Creality Ender 3
+
+    [[file:Creality-Ender-3.jpg]]
+    /Credits: Creality website/
+
+*** Our own RepRap printer
+
+    [[file:reprap-printer-settled.png]]
+
+* How do they work?
+
+** Building the object layer by layer
+
+   * FFF (FDM): [[https://wiki.reprap.org/wiki/FFF][Fused Filament Fabrication]]
+
+   * SLA: [[https://en.wikipedia.org/wiki/Stereolithography][Stereolithography]]
+
+* Why build own?
+
+   * Might be slightly cheaper.
+
+   * Freedom.
+
+   * Control.
+
+** The RepRap project
+
+   * Replicating Rapid Prototyper
+
+   * Adrian Bowyer
+
+   * Community project ([[https://reprap.org/wiki/RepRap][RepRap.org]])
+
+* Where is Python?
+
+   In most of the popular Free Software project involved
+
+** The projects
+
+   * [[https://freecadweb.org/][FreeCAD]]: 3D modeling software.
+
+   * [[https://www.pronterface.com/][Pronterface]]: Host software.
+
+   * [[https://github.com/Ultimaker/Cura][Ultimaker Cura]]: Slicing software.
+
+   * And many more.
+
+* Was it a success?
+
+   [[file:it-worked-the-big-bang-theory.png]]
+   /Credits: The Big Bang Theory (TV Series 2007-2019)/
+
+   YES! We got the printer working.
+
+** Some more images 🏃
+
+*** Frame assembly in FreeCAD
+
+    [[file:frame-assembly-freecad.png]]
+
+*** The Frame
+
+    [[file:frame-5.png]]
+
+*** 3D priting a part (self replication)
+
+    [[file:3d-printer-part.png]]
+
+*** 3D printed Yubikey cover
+
+    [[file:yubikey-cover.png]]
+
+*** 3DBenchy
+
+    [[file:3DBenchy.png]]
+
+* Buy or Build?
+
+* Read the whole story
+
+   [[https://geeksocket.in/posts/reprap-3d-printer/][https://geeksocket.in/posts/reprap-3d-printer/]]
+
+* COMMENT Image links
+
+  * https://blog.prusaprinters.org/prusa-i3_3543/
+    * https://blog.prusaprinters.org/wp-content/uploads/2017/09/MK3_poster_V6.jpg
+  * https://www.creality.com/goods-detail/ender-3-3d-printer
+    * https://pic2-cdn.creality.com/website/0b57177a-f653-48bf-8ab3-f19f9805b6b8
+  * https://commons.wikimedia.org/wiki/File:Robot_3D_print_timelapse_on_RepRapPro_Fisher.webm
+  * https://youtu.be/dcPUwhDPfv0
