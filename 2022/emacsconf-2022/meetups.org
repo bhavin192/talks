@@ -1,0 +1,297 @@
+#+TITLE: Attending and organizing Emacs meetups
+#+AUTHOR: Bhavin Gandhi
+#+EMAIL: geeksocket.in | emacsconf.org/2022/talks/meetups
+* 
+* COMMENT Meetup what?
+** EmacsConf 🤩
+
+    How has been the conference so far?
+
+** Post conference?
+
+    Still want to meet fellow Emacs users?
+
+** Meetups to the rescue!
+
+    Local user groups who meet frequently i.e. arrange meetups.
+
+* Attending and organizing Emacs meetups
+
+   /Enjoying your Emacs journey with more folks!/
+
+* COMMENT About me
+
+   * An Emacs user from India
+
+   * Organizer of Emacs APAC meetups
+
+   * Talking about online events, they allow you to attend across the
+     globe.
+
+* A video snippet from Emacs APAC
+
+   [[https://bbb.emacsverse.org/playback/presentation/2.0/playback.html?meetingId=76b7645df093745aeb1d58180a184df1daaff0cd-1642840156659][Recording of January 2022 meetup]]
+
+* Attending meetups
+
+   Let's discover more.
+
+** Why attend meetups
+
+    * Learning together
+
+    * Meet like minded people
+
+    * Have fun!
+
+    *But…*
+
+*** I'm a beginner
+
+     It is a great avenue for you!
+
+     * To discover more
+
+     * To get help
+
+     And it is okay to not understand everything
+
+*** I'm an experienced user
+
+     That's even better…
+
+     * You can help others
+
+     * There is always something new
+
+** Become part of a group
+
+    How to find and attend a meetup now?
+
+*** Finding a meetup
+
+     [[https://www.emacswiki.org/emacs/Usergroups][EmacsWiki: Usergroups]]
+
+*** Join them by…
+
+     * Subscribing to the mailing list/RSS feed
+
+     * Joining IRC channel
+
+     * Joining the group [[https://mobilizon.org/en/][Mobilizon]]
+
+** Staying updated
+
+    There are too many events of my interest 🤯
+
+    /[[https://emacslife.com/calendar/][Emacs calendar]]/
+
+    #+attr_org: :width 1600px
+    [[file:emacs-calendar.png]]
+
+** Making most out of it
+
+    * Ask questions/queries/help
+
+    * Note things down and try those later
+
+    * Have microphone/webcam if possible
+
+* Wait! I still have questions
+
+   Go ahead and post those
+
+* Starting a meetup group
+** Why?
+
+    * Giving back to community
+
+    * Creating a platform
+
+    * To have fun!
+
+** Have doubts?
+
+    * How much efforts do I need to put?
+
+    * I'm still new to Emacs
+
+* How?
+
+   Let's look at some specifics.
+
+** Format of meetup
+
+    What participants will do during the meetup?
+
+*** Free flowing discussions
+
+     Keep it simple and a bit unstructured.
+
+     * Let people ask questions, share new things
+
+     * Go through [[https://sachachua.com/blog/category/emacs-news/][Emacs News]] together
+       /Credits: Emacs Berlin?/
+
+***** Why discussions?
+
+      * Gives everyone an opportunity to participate
+
+      * Everyone gets to learn more as topics change
+
+      * Has less friction for speakers
+
+*** Talks
+
+     * Accommodate talks
+
+     * Host watch parties 🎥
+
+** Frequency of meetup
+
+    How often the group will meet?
+
+*** Recurring meetups
+
+     Meeting every month on a specific day and time.
+
+*** One-off meetups
+
+     Meet when you have talks, discussions topics.
+
+** Schedule and wait? 🤞
+
+    Nope, spread the word about it.
+
+*** Social media
+
+     Post on social media about your event.
+
+     * Do it at least a week or two before
+
+     * Share it on local GNU/Linux user groups
+
+     * Reddit seems to be a popular place as well
+
+*** Emacs calendar
+
+     Get your event added to EmacsWiki and the calendar.
+
+** During the meetup
+
+    * Start with introductions
+
+    * Make sure it is possible to participate via chat
+
+    * Share your website at the end
+
+    * Keep track of time ⏰
+
+** Post-meetup
+
+*** Publish the recordings
+
+     Consider publishing the talks/discussions
+
+     * People can revisit things
+
+     * Others can watch it later
+
+**** You can do more
+
+     * Have captions for the videos
+
+     * Written summary of the discussions with links
+
+**** COMMENT Summary examples
+
+     * https://macadie.info/2022/10/12/2022-10-austin-emacs-meetup/
+
+     * https://m-x-research.github.io/2022/01/21/a-new-year.html
+
+     * https://emacs-apac.gitlab.io/notes/july-2021/
+
+* Ready to start a meetup? 🏃
+
+   What are the next steps now?
+
+** Co-organizer
+
+    Have at least one co-organizer/person to talk to for the meetup.
+
+
+** Website
+
+    * Keep it simple
+
+    * Have RSS feed
+
+    * Add talks to the announcement pages
+
+*** COMMENT Examples
+
+     * https://emacs-apac.gitlab.io/
+
+     * https://m-x-research.github.io/
+
+     * https://emacs-berlin.org/
+
+** Video conferencing tool
+
+    It should support video, screenshare, and chat.
+
+    * BigBlueButton
+
+      /Ask for an account on bbb.emacsverse.org:
+      [[mailto:emacsconf-org@gnu.org][emacsconf-org@gnu.org]]/
+
+    * Jitsi Meet
+
+      - meet.jit.si
+      - jitsi.member.fsf.org
+      - calls.disroot.org
+
+** Communication media
+
+    * IRC channel
+
+      You can use =#emacsconf=
+
+    * Mailing list
+
+      You can use local GNU/Linux group's lists
+
+** Read/watch "Starting an Emacs Meetup"
+
+    [[https://harryrschwartz.com/2015/09/14/starting-an-emacs-meetup.html][Starting an Emacs Meetup - Harry R. Schwartz]]
+
+** Need help?
+
+    Feel free to reach out to [[mailto:emacsconf-org@gnu.org][emacsconf-org@gnu.org]] for help with BBB
+    account, hosting, captioning some of the talks.
+
+* 💡 All the organizers together?
+
+    A common place for all the meetup organizers for discussion?
+
+    Drop me an email at [[mailto:bhavin192@geeksocket.in][bhavin192@geeksocket.in]] if you are interested.
+
+* Thank you!
+
+   Time for questions 💬
+
+
+
+   /Thank you Sacha and Leo for their inputs/.
+* COMMENT Q&A topics
+
+   - BigBlueButton vs Jitsi Meet
+   - Automate as much as you can
+   - Examples of one-off meetups
+
+* COMMENT Local variables
+# Local Variables:
+# org-image-actual-width: nil
+# org-hide-emphasis-markers: t
+# End:
+
