@@ -1,8 +1,9 @@
 #+TITLE: Attending and organizing Emacs meetups
 #+AUTHOR: Bhavin Gandhi
 #+EMAIL: geeksocket.in | emacsconf.org/2022/talks/meetups
+# Change !COMMENT to COMMENT while presenting.
 * 
-* COMMENT Meetup what?
+* !COMMENT Meetup what?
 ** EmacsConf 🤩
 
     How has been the conference so far?
@@ -19,7 +20,7 @@
 
    /Enjoying your Emacs journey with more folks!/
 
-* COMMENT About me
+* !COMMENT About me
 
    * An Emacs user from India
 
@@ -203,7 +204,7 @@
 
      * Written summary of the discussions with links
 
-**** COMMENT Summary examples
+**** !COMMENT Summary examples
 
      * https://macadie.info/2022/10/12/2022-10-austin-emacs-meetup/
 
@@ -228,7 +229,7 @@
 
     * Add talks to the announcement pages
 
-*** COMMENT Examples
+*** !COMMENT Examples
 
      * https://emacs-apac.gitlab.io/
 
