@@ -1,0 +1,10 @@
+#+TITLE: Kubernetes & Cloud Native Paathshala (Beginner friendly)
+
+* Event details
+
+Agenda: [[https://www.meetup.com/kubernetes-pune/events/297042772/]]
+Page: [[https://konfhub.com/kubernetes-cloud-native-paathshala]]
+
+* Slides
+
+[[https://docs.google.com/presentation/d/1-eysqyvZUV0xjOSymjpi8SzBtoAMreg40vG6vpYmQ_s/]]
