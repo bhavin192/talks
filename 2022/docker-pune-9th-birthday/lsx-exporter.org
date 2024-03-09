@@ -1,0 +1,68 @@
+#+TITLE: LSx Exporter
+#+AUTHOR: Bhavin Gandhi (geeksocket.in|infracloud.io)
+#+STARTUP: inlineimages
+* LSx Exporter
+
+   /Prometheus exporter for solar inverter metrics/
+
+   [[https://gitlab.com/bhavin192/lsx-exporter][gitlab.com/bhavin192/lsx-exporter]]
+
+* Prometheus
+
+** Prometheus exporters
+
+* The solar power system
+
+** The setup
+   #+ATTR_HTML: :width 500px
+   [[file:solar-pv.jpg]]
+** The hardware
+   
+   [[file:inverter-product.jpg]]
+   /Credits: [[https://www.waaree.com][waaree.com]]/
+
+** 
+   [[file:lsw3-logging-stick.jpeg]]
+   /Credits: [[https://www.solarman.cn/enproinfo_2.html][solarman.cn/enproinfo_2.html]]/
+
+** Why?
+
+    * Connecting untrusted device to the Internet
+
+    * Privacy concerns
+
+* The exporter in action
+
+   /With mock values as of now/
+
+   http://localhost:9099/targets
+
+   http://localhost:9957/metrics
+
+** Actual graphs
+   
+   [[file:graph-1.png]]
+* The Production?
+
+   /The "production" which keeps going down!🔋/
+
+** Running on a Linux phone
+
+   [[file:jolla-c.png]]
+   /Credits: [[https://jolla.com/jollac/][jolla.com/jollac]]/
+** Go to the rescue 🙌
+
+    * Cross compiling to armv7 with Go
+
+* What's next?
+
+   * Insights into the actual export, import etc.
+
+   * [[https://www.youtube.com/watch?v=PSzkaSy5lHY][DIY ESP32 AC Power Meter (with Home Assistant/Automation
+    Integration) - YouTube]]
+
+* COMMENT Local variables
+# local variables:
+# org-hide-emphasis-markers: t
+# org-image-actual-width: nil
+# end:
