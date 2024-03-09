@@ -1,0 +1,46 @@
+#+TITLE: Desktop applications with Fyne
+#+AUTHOR: Bhavin Gandhi (geeksocket.in|infracloud.io)
+#+STARTUP: inlineimages
+* Desktop applications with Fyne
+
+   https://fyne.io/
+
+* Why Desktop application?
+
+   /In the age of webapps 🙆/
+
+** Just build CLI apps?
+
+* Introducing Fyne
+
+   Easily build native apps that work everywhere
+
+** A sample
+   
+   #+begin_src go
+     form := &widget.Form{}
+     form.OnSubmit = func() {
+	     var err error
+	     token, err = getBearerToken(usernameEntry.Text, passwordEntry.Text)
+	     if err != nil {
+		     err = fmt.Errorf("Failed to generate token: %v", err)
+		     dialog.ShowError(err, myWindow)
+		     log.Println(err)
+		     return
+	     }
+	     dialog.ShowInformation(
+		     "Login Successful",
+		     "Generated a token successfully\nYou can minimize the application now",
+		     myWindow,
+	     )
+     }
+   #+end_src
+
+** Let's see it in action
+
+* COMMENT Local variables
+# local variables:
+# org-hide-emphasis-markers: t
+# org-image-actual-width: nil
+# end:  
+
